@@ -205,6 +205,8 @@
   .ticks li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; }
   .ticks svg { width: 20px; height: 20px; flex: none; margin-top: 3px; stroke: var(--gold-deep); fill: none; stroke-width: 2; }
   .packs { display: grid; gap: 12px; }
+  .pick-hint { font-size: 14px; font-weight: 500; color: var(--err); margin-bottom: -10px; }
+  #izbor { scroll-margin-top: 110px; }
   .pack { position: relative; display: block; cursor: pointer; }
   .pack input { position: absolute; opacity: 0; pointer-events: none; }
   .pack-body { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 20px; background: #fffdf8; transition: border-color .2s, box-shadow .2s; }
@@ -397,7 +399,7 @@
       <svg><use href="#peaks"/></svg>
       <span>Norden BioLabs</span>
     </a>
-    <a class="btn btn-dark header-cta order-mail" href="mailto:nordenbiolabs@gmail.com">Поръчай</a>
+    <a class="btn btn-dark header-cta" href="#izbor">Поръчай</a>
   </div>
 </header>
 
@@ -558,9 +560,10 @@
         </ul>
         <p class="disclaimer">Хранителна добавка. Не замества разнообразното и балансирано хранене и здравословния начин на живот.</p>
 
-        <div class="packs" role="radiogroup" aria-label="Пакет">
+        <p class="pick-hint" id="pickHint" hidden>Изберете 1 или 2 флакона, за да продължите.</p>
+        <div class="packs" id="izbor" role="radiogroup" aria-label="Пакет">
           <label class="pack">
-            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама" checked>
+            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама">
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
               <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">60 капсули · 0.67 € на ден</span></span>
@@ -654,12 +657,12 @@
 
       <div class="form-card">
         <div class="selected">
-          <div><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
+          <div><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""><span>Daily Performance<br><b id="selName">Не е избран пакет</b></span></div>
           <a href="#produkt">Промени</a>
         </div>
         <div class="summary">
           <div><span>Доставка</span><span>По тарифа на куриера</span></div>
-          <div class="total"><span>Цена на продукта</span><b id="sumPrice">39.95 €</b></div>
+          <div class="total"><span>Цена на продукта</span><b id="sumPrice">—</b></div>
         </div>
 
         <div class="channel">
@@ -762,18 +765,25 @@
     var radios = document.querySelectorAll('input[name="pack"]');
 
     // Пакетът влиза в готовото съобщение и в имейла
+    function selected() {
+      var c = null;
+      radios.forEach(function (r) { if (r.checked) c = r; });
+      return c;
+    }
+
+    // Пакетът влиза в готовото съобщение, имейла и WhatsApp; без избор — общо съобщение
     function sync() {
-      radios.forEach(function (r) {
-        if (!r.checked) return;
-        sum.textContent = r.dataset.price;
-        selName.textContent = r.dataset.name;
-        msg.value = 'Здравейте! Искам да поръчам Daily Performance — ' + r.value + '.\n\n' +
-          'Име и фамилия: \nТелефон: \nГрад: \nОфис на Еконт / Спиди / Pigeon Express или адрес: ';
-        mailBtn.href = 'mailto:' + EMAIL +
-          '?subject=' + encodeURIComponent('Поръчка Daily Performance — ' + r.dataset.name) +
-          '&body=' + encodeURIComponent(msg.value);
-        waBtn.href = 'https://wa.me/359897914321?text=' + encodeURIComponent(msg.value);
-      });
+      var r = selected();
+      sum.textContent = r ? r.dataset.price : '—';
+      selName.textContent = r ? r.dataset.name : 'Не е избран пакет';
+      msg.value = 'Здравейте! Искам да поръчам Daily Performance — ' +
+        (r ? r.value : '1 флакон (22.95 €) / 2 флакона (39.95 €)') + '.\n\n' +
+        'Име и фамилия: \nТелефон: \nГрад: \nОфис на Еконт / Спиди / Pigeon Express или адрес: ';
+      mailBtn.href = 'mailto:' + EMAIL +
+        '?subject=' + encodeURIComponent('Поръчка Daily Performance' + (r ? ' — ' + r.dataset.name : '')) +
+        '&body=' + encodeURIComponent(msg.value);
+      waBtn.href = 'https://wa.me/359897914321?text=' + encodeURIComponent(msg.value);
+      if (r) document.getElementById('pickHint').hidden = true;
     }
     radios.forEach(function (r) { r.addEventListener('change', sync); });
     sync();
@@ -799,8 +809,15 @@
 
     // Бутоните „Поръчай“ отварят имейл с избрания пакет
     document.querySelectorAll('.order-mail').forEach(function (a) {
-      a.addEventListener('click', function () {
+      a.addEventListener('click', function (e) {
         if (a.dataset.pick) document.getElementById('pack-' + a.dataset.pick).checked = true;
+        if (!selected()) {
+          // Без избран пакет: към избора на 1 или 2 флакона
+          e.preventDefault();
+          document.getElementById('pickHint').hidden = false;
+          document.getElementById('izbor').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          return;
+        }
         sync();
         a.href = mailBtn.href;
       });
