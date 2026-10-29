@@ -240,23 +240,29 @@
   .selected a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); white-space: nowrap; }
   .field { display: grid; gap: 6px; }
   .field label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
-  .field input { font: 400 16px var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 15px 16px; width: 100%; }
-  .field input::placeholder { color: #a59b8b; }
-  .field input:focus { outline: none; border-color: var(--ink); background: #fff; }
-  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
-  .consent input { margin-top: 2px; accent-color: var(--ink); width: 16px; height: 16px; flex: none; }
+  .field textarea { font: 400 15px/1.55 var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; width: 100%; resize: vertical; }
+  .field textarea:focus { outline: none; border-color: var(--ink); }
+  .channel { display: grid; gap: 14px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+  .channel-head { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .channel-head > div { display: grid; gap: 2px; min-width: 0; }
+  .channel-head b { font-weight: 500; font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+  .channel-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--stone); display: grid; place-items: center; flex: none; }
+  .channel-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-deep); stroke-width: 1.5; stroke-linejoin: round; }
+  .channel-icon.viber { background: #7360f2; }
+  .channel-icon.viber svg { stroke: #fff; }
+  .copy-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
+  .copy-row .value { font-size: 19px; font-weight: 500; color: var(--ink); user-select: all; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+  .copy { font: 500 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .copy:hover { color: var(--ink); }
+  .copy-msg { justify-self: start; }
+  .hint { font-size: 13px; color: var(--ink-soft); margin-top: -6px; }
   .summary { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
   .summary div { display: flex; justify-content: space-between; }
   .summary .total { color: var(--ink); font-size: 16px; font-weight: 500; align-items: baseline; }
   .summary .total b { font-family: var(--display); font-size: 34px; font-weight: 500; font-variant-numeric: tabular-nums; }
   .form-card .btn { width: 100%; }
-  .result { font-size: 14px; padding: 14px 16px; border-radius: 12px; border: 1px solid currentColor; }
-  .result.ok { color: var(--ok); background: #eef5ef; }
-  .result.err { color: var(--err); background: #faeeeb; }
-  .result.wait { color: var(--ink-soft); background: var(--paper); }
   @media (max-width: 900px) { .checkout { grid-template-columns: 1fr; gap: 40px; } .checkout-intro { position: static; } }
-  @media (max-width: 480px) { .form-card { padding: 24px 18px; } .row-2 { grid-template-columns: 1fr; } .pack-body { padding: 16px 14px; gap: 12px; } .pack-price b { font-size: 26px; } .assure { grid-template-columns: 1fr; } .assure div { grid-template-columns: auto 1fr; justify-items: start; text-align: left; align-items: center; gap: 12px; } }
+  @media (max-width: 480px) { .form-card { padding: 24px 18px; } .channel { padding: 16px; } .pack-body { padding: 16px 14px; gap: 12px; } .pack-price b { font-size: 26px; } .assure { grid-template-columns: 1fr; } .assure div { grid-template-columns: auto 1fr; justify-items: start; text-align: left; align-items: center; gap: 12px; } }
 
   /* FAQ */
   .faq { background: var(--stone); }
@@ -280,6 +286,7 @@
   .wordmark { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(64px, 17.5vw, 250px); line-height: .8; color: var(--gold); letter-spacing: -.01em; white-space: nowrap; margin-block: 24px 8px; }
   .site-footer p { max-width: 95ch; line-height: 1.7; }
   .legal-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--night-line); }
+  .footer-contact { display: flex; flex-wrap: wrap; gap: 8px 32px; color: var(--cream); font-size: 16px; }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -315,7 +322,7 @@
       <svg><use href="#peaks"/></svg>
       <span>Norden BioLabs</span>
     </a>
-    <a class="btn btn-dark header-cta" href="#produkt">Поръчай</a>
+    <a class="btn btn-dark header-cta" href="#kontakt">Поръчай</a>
   </div>
 </header>
 
@@ -437,7 +444,7 @@
 
         <div class="packs" role="radiogroup" aria-label="Пакет">
           <label class="pack">
-            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама" form="orderForm" checked>
+            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама" checked>
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
               <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">120 капсули · по 0.33 € на капсула</span></span>
@@ -446,7 +453,7 @@
             <span class="pack-flag">Най-изгоден</span>
           </label>
           <label class="pack">
-            <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" data-name="1 флакон" form="orderForm">
+            <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" data-name="1 флакон">
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
               <span><span class="pack-name">1 флакон</span><span class="pack-sub">60 капсули · 30-дневен курс</span></span>
@@ -455,7 +462,7 @@
           </label>
         </div>
 
-        <a class="btn btn-dark" href="#checkout">Към поръчката <svg class="arrow"><use href="#arrow"/></svg></a>
+        <a class="btn btn-dark" href="#kontakt">Поръчай по Viber или имейл <svg class="arrow"><use href="#arrow"/></svg></a>
 
         <div class="assure">
           <div><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 15h3"/></svg>Плащане при доставка</div>
@@ -489,7 +496,7 @@
           </details>
           <details>
             <summary>Доставка</summary>
-            <div class="body">Изпращаме с Еконт или Спиди до офис или адрес в рамките на 1–2 работни дни след телефонно потвърждение. Плащате на куриера при получаване.</div>
+            <div class="body">Изпращаме с Еконт или Спиди до офис или адрес в рамките на 1–2 работни дни, след като потвърдим поръчката ви. Плащате на куриера при получаване.</div>
           </details>
         </div>
       </div>
@@ -508,60 +515,52 @@
     </div>
   </section>
 
-  <section class="section" id="checkout">
+  <section class="section" id="kontakt">
     <div class="wrap checkout">
       <div class="checkout-intro">
         <p class="eyebrow">Поръчка</p>
-        <h2>Почти готово</h2>
-        <p>Без регистрация и без онлайн плащане. Оставете данни за доставка и ние ще се погрижим за останалото.</p>
+        <h2>Пишете ни</h2>
+        <p>Поръчките приемаме по Viber и имейл. Без регистрация и без онлайн плащане.</p>
         <ol class="steps">
-          <li><span><b>Попълвате формата</b>Отнема по-малко от минута.</span></li>
-          <li><span><b>Обаждаме ви се</b>Потвърждаваме поръчката и адреса.</span></li>
+          <li><span><b>Пишете ни</b>Кажете кой пакет искате, име, телефон и офис на Еконт/Спиди или адрес.</span></li>
+          <li><span><b>Потвърждаваме</b>Отговаряме ви и потвърждаваме поръчката.</span></li>
           <li><span><b>Плащате при получаване</b>Пратката идва с Еконт или Спиди за 1–2 работни дни.</span></li>
         </ol>
       </div>
 
-      <form id="orderForm" class="form-card" novalidate>
-        <!-- Замени със своя безплатен ключ от web3forms.com -->
-        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-        <input type="hidden" name="subject" value="Нова поръчка за Norden BioLabs">
-        <input type="hidden" name="from_name" value="Norden BioLabs Website">
-        <input type="hidden" name="Пакет" id="pkgField" value="2 флакона „За двама“ — 39.95 €">
-
+      <div class="form-card">
         <div class="selected">
           <div><img src="images/bottle.jpg" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
           <a href="#produkt">Промени</a>
         </div>
-
-        <div class="field">
-          <label for="f-name">Име и фамилия</label>
-          <input id="f-name" type="text" name="Име" autocomplete="name" placeholder="Иван Петров" required>
-        </div>
-        <div class="row-2">
-          <div class="field">
-            <label for="f-phone">Телефон</label>
-            <input id="f-phone" type="tel" name="Телефон" autocomplete="tel" placeholder="+359 88 123 4567" required>
-          </div>
-          <div class="field">
-            <label for="f-city">Град</label>
-            <input id="f-city" type="text" name="Град" autocomplete="address-level2" placeholder="София" required>
-          </div>
-        </div>
-        <div class="field">
-          <label for="f-addr">Офис на Еконт / Спиди или адрес</label>
-          <input id="f-addr" type="text" name="Адрес_или_Офис" autocomplete="street-address" placeholder="Напр. Еконт, офис Лозенец" required>
-        </div>
-        <label class="consent" for="f-consent">
-          <input id="f-consent" type="checkbox" required>
-          <span>Съгласен/на съм с <a href="/usloviya">Общите условия</a> и <a href="/poveritelnost">Политиката за поверителност</a>.</span>
-        </label>
         <div class="summary">
           <div><span>Доставка</span><span>Безплатна</span></div>
           <div class="total"><span>Общо при доставка</span><b id="sumPrice">39.95 €</b></div>
         </div>
-        <button type="submit" class="btn btn-gold">Потвърди поръчката</button>
-        <div id="resultMessage" class="result" role="status" hidden></div>
-      </form>
+
+        <div class="channel">
+          <div class="channel-head">
+            <span class="channel-icon viber" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M9 8.5c.3 2.4 2.1 4.2 4.5 4.5l.9-1.2 1.6.8-.4 1.4c-3.6 0-6.6-3-6.6-6.6l1.4-.4.8 1.6z"/></svg></span>
+            <div><b>Viber</b><span class="copy-row"><span class="value">+359 897 914 321</span><button type="button" class="copy" data-copy="+359897914321">Копирай</button></span></div>
+          </div>
+          <a class="btn btn-gold" href="viber://chat?number=%2B359897914321">Пиши ни във Viber</a>
+        </div>
+
+        <div class="channel">
+          <div class="channel-head">
+            <span class="channel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span>
+            <div><b>Имейл</b><span class="copy-row"><span class="value">nordenbiolabs@gmail.com</span><button type="button" class="copy" data-copy="nordenbiolabs@gmail.com">Копирай</button></span></div>
+          </div>
+          <a class="btn btn-dark" id="mailBtn" href="mailto:nordenbiolabs@gmail.com">Изпрати имейл</a>
+        </div>
+
+        <div class="field">
+          <label for="msg">Готово съобщение за поръчка</label>
+          <textarea id="msg" rows="7" readonly></textarea>
+          <button type="button" class="copy copy-msg" id="copyMsg">Копирай съобщението</button>
+        </div>
+        <p class="hint">Поставете съобщението във Viber или имейла и попълнете данните си.</p>
+      </div>
     </div>
   </section>
 
@@ -590,8 +589,8 @@
           <p>Ако приемате лекарства или имате заболяване, консултирайте се с лекар преди да започнете. Някои растителни съставки, като ашваганда и гинко, могат да взаимодействат с определени медикаменти.</p>
         </details>
         <details>
-          <summary>Как се доставя и плаща поръчката?</summary>
-          <p>След като попълните формата, ще ви се обадим за потвърждение. Изпращаме с Еконт или Спиди до офис или адрес, а плащате на куриера при получаване.</p>
+          <summary>Как да поръчам?</summary>
+          <p>Пишете ни във Viber на +359 897 914 321 или на nordenbiolabs@gmail.com. Кажете кой пакет искате, име, телефон и офис на Еконт/Спиди или адрес. Потвърждаваме и изпращаме, а плащате на куриера при получаване.</p>
         </details>
         <details>
           <summary>Мога ли да върна продукта?</summary>
@@ -615,25 +614,54 @@
     </div>
     <div class="wordmark" aria-hidden="true">Norden</div>
     <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
+    <div class="footer-contact"><span>Viber: +359 897 914 321</span><span>Имейл: nordenbiolabs@gmail.com</span></div>
     <div class="legal-row"><span>© 2026 Norden BioLabs. Всички права запазени.</span><span>Плащане при доставка · Еконт · Спиди</span></div>
   </div>
 </footer>
 
 <script>
   (function () {
-    var form = document.getElementById('orderForm');
-    var pkgField = document.getElementById('pkgField');
+    var EMAIL = 'nordenbiolabs@gmail.com';
     var sum = document.getElementById('sumPrice');
     var selName = document.getElementById('selName');
-    var result = document.getElementById('resultMessage');
+    var msg = document.getElementById('msg');
+    var mailBtn = document.getElementById('mailBtn');
     var radios = document.querySelectorAll('input[name="pack"]');
 
+    // Пакетът влиза в готовото съобщение и в имейла
     function sync() {
       radios.forEach(function (r) {
-        if (r.checked) { pkgField.value = r.value; sum.textContent = r.dataset.price; selName.textContent = r.dataset.name; }
+        if (!r.checked) return;
+        sum.textContent = r.dataset.price;
+        selName.textContent = r.dataset.name;
+        msg.value = 'Здравейте! Искам да поръчам Daily Performance — ' + r.value + '.\n\n' +
+          'Име и фамилия: \nТелефон: \nГрад: \nОфис на Еконт / Спиди или адрес: ';
+        mailBtn.href = 'mailto:' + EMAIL +
+          '?subject=' + encodeURIComponent('Поръчка Daily Performance — ' + r.dataset.name) +
+          '&body=' + encodeURIComponent(msg.value);
       });
     }
     radios.forEach(function (r) { r.addEventListener('change', sync); });
+    sync();
+
+    function copyText(text, btn) {
+      var label = btn.textContent;
+      function done() { btn.textContent = 'Копирано'; setTimeout(function () { btn.textContent = label; }, 1800); }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    }
+    document.querySelectorAll('[data-copy]').forEach(function (b) {
+      b.addEventListener('click', function () { copyText(b.dataset.copy, b); });
+    });
+    document.getElementById('copyMsg').addEventListener('click', function () { copyText(msg.value, this); });
 
     document.querySelectorAll('[data-pick]').forEach(function (a) {
       a.addEventListener('click', function () {
@@ -658,44 +686,7 @@
       });
     });
 
-    function show(kind, text) {
-      result.className = 'result ' + kind;
-      result.textContent = text;
-      result.hidden = false;
-    }
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!form.checkValidity()) {
-        show('err', 'Моля, попълнете всички полета и приемете Общите условия.');
-        form.reportValidity && form.reportValidity();
-        return;
-      }
-      sync();
-      var data = Object.fromEntries(new FormData(form));
-      delete data.pack;
-      show('wait', 'Изпращаме поръчката…');
-
-      fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      })
-      .then(function (res) {
-        if (res.status === 200) {
-          show('ok', 'Благодарим ви! Поръчката е приета. Ще ви се обадим по телефона за потвърждение.');
-          form.reset();
-          document.getElementById('pack-2').checked = true;
-          sync();
-          // Тук може да се изпрати Meta Pixel събитие: fbq('track', 'Purchase');
-        } else {
-          show('err', 'Поръчката не беше изпратена. Проверете данните и опитайте отново.');
-        }
-      })
-      .catch(function () {
-        show('err', 'Няма връзка със сървъра. Проверете интернет връзката си и опитайте отново.');
-      });
-    });
+    // Тук може да се изпрати Meta Pixel събитие при клик на Viber/имейл: fbq('track', 'Contact');
   })();
 </script>
 
