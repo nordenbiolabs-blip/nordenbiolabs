@@ -174,16 +174,15 @@
   .more-ing a { font-weight: 500; color: var(--ink); }
 
   /* Full-bleed together */
-  .together { position: relative; background: var(--stone); }
-  .together img { width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 30% 50%; }
-  .together-card { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 32px; background: var(--paper); border-radius: var(--r); padding: 32px; max-width: 440px; display: grid; gap: 16px; box-shadow: 0 20px 60px rgba(20, 17, 13, .18); }
+  .together { background: var(--stone); padding-block: 72px; }
+  .together .wrap { display: grid; grid-template-columns: 1.7fr 1fr; gap: 48px; align-items: center; }
+  .together figure { margin: 0; border-radius: var(--r); overflow: hidden; min-width: 0; }
+  .together img { width: 100%; height: auto; }
+  .together-card { display: grid; gap: 16px; min-width: 0; }
   .together-card h2 { font-size: clamp(40px, 4.4vw, 60px); }
   .together-card p { color: var(--ink-soft); }
   .together-card .btn { justify-self: start; }
-  @media (min-width: 1280px) { .together-card { right: calc((100vw - var(--wrap)) / 2 + 20px); } }
-  @media (max-width: 760px) {
-    .together-card { position: static; max-width: none; border-radius: 0; box-shadow: none; padding: 40px max(20px, env(safe-area-inset-right, 0px)) 56px max(20px, env(safe-area-inset-left, 0px)); background: var(--stone); }
-  }
+  @media (max-width: 900px) { .together .wrap { grid-template-columns: 1fr; gap: 32px; } .together { padding-block: 0 56px; } .together figure { border-radius: 0; margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); } }
 
   /* Product detail (shop) */
   .pdp { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
@@ -415,7 +414,7 @@
           <div class="chips"><span class="chip">9 съставки</span><span class="chip">1 капсула дневно</span><span class="chip">30 дни</span></div>
         </div>
         <div class="hero-bottle">
-          <img src="images/bottle-480.webp" srcset="images/bottle-320.webp 320w, images/bottle-480.webp 480w, images/bottle.webp 581w" sizes="(max-width: 900px) 70vw, 300px" fetchpriority="high" decoding="async" width="581" height="1055" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
+          <img src="images/bottle-480.webp" srcset="images/bottle-320.webp 320w, images/bottle-480.webp 480w, images/bottle.webp 581w" sizes="(max-width: 900px) 70vw, 300px" fetchpriority="high" decoding="async" width="581" height="1064" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
         </div>
         <div class="hero-side right">
           <span class="promo">Промоция −23%</span>
@@ -530,22 +529,24 @@
   </section>
 
   <section class="together">
-    <img src="images/together.webp" srcset="images/together-900.webp 900w, images/together.webp 1671w" sizes="100vw" width="1671" height="941" loading="lazy" decoding="async" alt="Два флакона Norden BioLabs с капсули върху каменен плот">
-    <div class="together-card">
-      <p class="eyebrow">За него и за нея</p>
-      <h2>По-добре заедно</h2>
-      <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки, за 39.95 € вместо 59.80 €.</p>
-      <a class="btn btn-dark order-mail" data-pick="2" href="mailto:nordenbiolabs@gmail.com">Пакет за двама · 39.95 €</a>
+    <div class="wrap">
+      <figure><img src="images/together.webp" srcset="images/together-900.webp 900w, images/together.webp 1536w" sizes="(max-width: 900px) 100vw, 760px" width="1536" height="1024" loading="lazy" decoding="async" alt="Два флакона Norden BioLabs с капсули върху камък сред зеленина"></figure>
+      <div class="together-card">
+        <p class="eyebrow">За него и за нея</p>
+        <h2>По-добре заедно</h2>
+        <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки, за 39.95 € вместо 59.80 €.</p>
+        <a class="btn btn-dark order-mail" data-pick="2" href="mailto:nordenbiolabs@gmail.com">Пакет за двама · 39.95 €</a>
+      </div>
     </div>
   </section>
 
   <section class="section" id="produkt">
     <div class="wrap pdp">
       <div class="gallery">
-        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.webp" width="581" height="1055" loading="lazy" decoding="async" alt="Флакон Daily Performance"></div>
+        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.webp" width="581" height="1064" loading="lazy" decoding="async" alt="Флакон Daily Performance"></div>
         <div class="thumbs">
-          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.webp" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""></button>
-          <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together-900.webp" width="900" height="507" loading="lazy" alt=""></button>
+          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.webp" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle-320.webp" width="320" height="586" loading="lazy" alt=""></button>
+          <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together-900.webp" width="900" height="600" loading="lazy" alt=""></button>
         </div>
       </div>
 
@@ -657,7 +658,7 @@
 
       <div class="form-card">
         <div class="selected">
-          <div><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""><span>Daily Performance<br><b id="selName">Не е избран пакет</b></span></div>
+          <div><img src="images/bottle-320.webp" width="320" height="586" loading="lazy" alt=""><span>Daily Performance<br><b id="selName">Не е избран пакет</b></span></div>
           <a href="#produkt">Промени</a>
         </div>
         <div class="summary">
