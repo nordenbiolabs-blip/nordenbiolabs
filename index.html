@@ -7,467 +7,518 @@
 <meta name="description" content="Daily Performance от Norden BioLabs — хранителна добавка с L-цитрулин, ашваганда KSM-66®, бабини зъби и цинк. Прозрачен състав, плащане при доставка.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- ТУК ПОСТАВИ META PIXEL КОДА (след банер за съгласие с бисквитки) -->
 <style>
-  /* Layout: светли каменни плоскости за историята, черно-златна лента за състава — като етикета. */
+  /* Layout: магазинна страница с огромна типография — черно, злато и камък като етикета; плочки за съставките, продукт вляво/избор вдясно. */
   :root {
-    --ink: #17140f;
-    --ink-soft: #4f4840;
-    --paper: #f8f5f0;
-    --stone: #ece6dc;
-    --line: #dcd3c5;
-    --gold: #b38b45;
-    --gold-text: #86642a;
-    --night: #12100d;
-    --night-2: #1d1a15;
-    --night-line: #3a332a;
-    --night-text: #cfc6b8;
-    --gold-bright: #d8b36d;
+    --ink: #14110d;
+    --ink-soft: #5a5247;
+    --paper: #f6f2eb;
+    --stone: #e9e2d6;
+    --line: #d8cfc0;
+    --gold: #c9a35a;
+    --gold-deep: #8a6a2c;
+    --night: #110f0c;
+    --night-2: #1c1914;
+    --night-line: #353028;
+    --cream: #f4eee3;
+    --muted-night: #9a907f;
     --ok: #2f6b45;
     --err: #9b3426;
-    --display: "Cormorant", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --display: "Oswald", "Arial Narrow", "Roboto Condensed", Impact, sans-serif;
     --sans: "Jost", "Futura", "Century Gothic", "Segoe UI", system-ui, sans-serif;
-    --wrap: 1120px;
-    --radius: 6px;
+    --wrap: 1240px;
+    --r: 18px;
     color-scheme: light;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: 17px;
-    line-height: 1.65;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   img { max-width: 100%; height: auto; display: block; }
   a { color: inherit; }
   :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  h1, h2, h3, p { margin: 0; }
+  h1, h2 { font-family: var(--display); font-weight: 600; text-transform: uppercase; line-height: .92; letter-spacing: -.005em; text-wrap: balance; }
+  h2 { font-size: clamp(44px, 7vw, 104px); }
+  .wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep); }
+  .on-dark .eyebrow { color: var(--gold); }
 
-  .wrap {
-    max-width: var(--wrap);
-    margin: 0 auto;
-    padding-left: max(20px, env(safe-area-inset-left, 0px));
-    padding-right: max(20px, env(safe-area-inset-right, 0px));
-  }
-  .eyebrow {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: var(--gold-text);
-    margin: 0;
-  }
-  h1, h2, h3 { text-wrap: balance; margin: 0; }
-  h1, h2 { font-family: var(--display); font-weight: 600; line-height: 1.05; letter-spacing: -.01em; }
-  h1 { font-size: clamp(44px, 6.4vw, 76px); }
-  h2 { font-size: clamp(34px, 4.4vw, 52px); }
-  h3 { font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-  p { margin: 0; }
-  .lead { font-size: 19px; color: var(--ink-soft); max-width: 34em; font-weight: 300; }
-
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    font: 500 14px/1 var(--sans);
-    letter-spacing: .14em; text-transform: uppercase;
-    text-decoration: none;
-    padding: 18px 28px;
-    border-radius: var(--radius);
-    border: 1px solid var(--ink);
-    cursor: pointer;
-    transition: background .2s, color .2s, border-color .2s;
-  }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; font: 500 14px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 20px 30px; border-radius: 999px; border: 1px solid var(--ink); cursor: pointer; transition: background .2s, color .2s, transform .2s; }
+  .btn:hover { transform: translateY(-1px); }
   .btn-dark { background: var(--ink); color: var(--paper); }
-  .btn-dark:hover { background: #2b251d; }
-  .btn-line { background: transparent; color: var(--ink); }
-  .btn-line:hover { background: var(--ink); color: var(--paper); }
+  .btn-gold { background: var(--gold); border-color: var(--gold); color: var(--night); }
+  .btn-gold:hover { background: #d6b26c; }
+  .btn .arrow { width: 18px; height: 10px; }
+
+  /* Ticker */
+  .ticker { background: var(--night); color: var(--cream); overflow: hidden; white-space: nowrap; font-size: 13px; letter-spacing: .18em; text-transform: uppercase; }
+  .ticker-track { display: inline-flex; gap: 48px; padding-block: 11px; animation: tick 38s linear infinite; }
+  .ticker span { display: inline-flex; align-items: center; gap: 48px; }
+  .ticker span::after { content: ""; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg); }
+  @keyframes tick { to { transform: translateX(-50%); } }
 
   /* Header */
   body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--paper); }
-  .site-header {
-    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
-    background: color-mix(in srgb, var(--paper) 92%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+  .site-header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+  .site-header .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 70px; gap: 20px; }
+  .nav { display: flex; gap: 28px; }
+  .nav a { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; color: var(--ink-soft); }
+  .nav a:hover { color: var(--ink); }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); justify-self: center; }
+  .logo svg { width: 36px; height: 19px; flex: none; }
+  .logo span { font-size: 19px; font-weight: 500; }
+  .header-cta { justify-self: end; padding: 13px 22px; font-size: 12px; }
+  @media (max-width: 820px) {
+    .site-header .wrap { grid-template-columns: 1fr auto; }
+    .nav { display: none; }
+    .logo { justify-self: start; }
   }
-  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
-  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
-  .logo svg { width: 38px; height: 20px; flex: none; }
-  .logo span { font-size: 19px; font-weight: 500; letter-spacing: .01em; }
-  .nav { display: flex; align-items: center; gap: 32px; }
-  .nav a:not(.btn) { font-size: 14px; text-decoration: none; color: var(--ink-soft); letter-spacing: .04em; }
-  .nav a:not(.btn):hover { color: var(--ink); }
-  .nav .btn { padding: 12px 20px; font-size: 12px; }
-  @media (max-width: 820px) { .nav a:not(.btn) { display: none; } }
 
   /* Hero */
-  .hero { padding-block: 56px 72px; }
-  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
-  .hero-copy { display: grid; gap: 24px; min-width: 0; }
-  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
-  .hero-facts {
-    display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0;
-    margin-top: 16px; padding-top: 24px; border-top: 1px solid var(--line);
-  }
-  .hero-facts div { padding-right: 28px; margin-right: 28px; border-right: 1px solid var(--line); }
-  .hero-facts div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
-  .hero-facts b { display: block; font-family: var(--display); font-size: 32px; font-weight: 600; line-height: 1; font-variant-numeric: lining-nums; }
-  .hero-facts small { font-size: 13px; color: var(--ink-soft); letter-spacing: .03em; }
-  .hero-visual {
-    background: var(--stone);
-    border-radius: var(--radius);
-    aspect-ratio: 4 / 4.4;
-    max-width: 100%;
-    display: grid; place-items: center;
-    overflow: hidden;
-    position: relative;
-  }
-  .hero-visual img { width: 118%; max-width: none; mix-blend-mode: multiply; }
-  .hero-visual .tag {
-    position: absolute; left: 20px; bottom: 18px;
-    font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
-  }
-  @media (max-width: 880px) {
-    .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
-    .hero-visual { order: -1; aspect-ratio: 4 / 3.4; }
-    .hero-visual img { width: 100%; }
-  }
-  @media (max-width: 480px) {
-    .hero-facts div { padding-right: 16px; margin-right: 16px; }
-    .hero-facts b { font-size: 26px; }
+  .hero { position: relative; padding-block: 40px 0; overflow: hidden; }
+  .hero h1 { font-size: clamp(64px, 15.5vw, 228px); text-align: center; color: var(--ink); position: relative; z-index: 1; }
+  .hero h1 .gold { color: var(--gold); display: block; }
+  .hero-stage { position: relative; display: grid; grid-template-columns: 1fr minmax(240px, 380px) 1fr; align-items: end; gap: 32px; margin-top: clamp(-150px, -9vw, -40px); }
+  .hero-bottle { position: relative; z-index: 2; mix-blend-mode: multiply; }
+  .hero-bottle img { width: 100%; }
+  .hero-side { padding-bottom: 72px; display: grid; gap: 18px; align-content: end; min-width: 0; }
+  .hero-side p { font-size: 18px; color: var(--ink-soft); max-width: 22em; font-weight: 300; }
+  .hero-side.right { justify-items: end; text-align: right; }
+  .price-tag { display: flex; align-items: baseline; gap: 12px; }
+  .price-tag b { font-family: var(--display); font-size: 44px; font-weight: 500; line-height: 1; }
+  .price-tag s { color: var(--ink-soft); font-size: 15px; }
+  .hero-side small { font-size: 13px; color: var(--ink-soft); letter-spacing: .04em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; background: #fffaf2; }
+  @media (max-width: 900px) {
+    .hero-stage { grid-template-columns: 1fr; justify-items: center; margin-top: -24px; gap: 0; }
+    .hero-bottle { width: min(300px, 70vw); order: -1; }
+    .hero-side, .hero-side.right { justify-items: center; text-align: center; padding-bottom: 0; padding-top: 24px; }
+    .hero-side.right { padding-bottom: 56px; }
+    .chips { justify-content: center; }
   }
 
-  /* Assurance strip */
-  .strip { border-block: 1px solid var(--line); background: var(--paper); }
-  .strip ul {
-    list-style: none; margin: 0; padding: 0;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-  }
-  .strip li { display: flex; align-items: center; gap: 12px; padding: 22px 20px; font-size: 14px; color: var(--ink-soft); border-left: 1px solid var(--line); }
-  .strip li:first-child { border-left: 0; padding-left: 0; }
-  .strip svg { width: 22px; height: 22px; flex: none; stroke: var(--gold); fill: none; stroke-width: 1.4; }
-  @media (max-width: 880px) {
-    .strip ul { grid-template-columns: 1fr 1fr; }
-    .strip li { border-left: 0; padding-left: 0; }
-  }
-  @media (max-width: 480px) { .strip ul { grid-template-columns: 1fr; } .strip li { padding-block: 14px; } }
-
-  /* Section base */
-  .section { padding-block: 104px; }
-  .section-head { display: grid; gap: 16px; max-width: 640px; margin-bottom: 56px; }
-  @media (max-width: 640px) { .section { padding-block: 72px; } .section-head { margin-bottom: 40px; } }
-
-  /* Pillars */
-  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--ink); }
-  .pillar { padding: 32px 32px 8px 0; display: grid; gap: 14px; align-content: start; min-width: 0; }
-  .pillar + .pillar { padding-left: 32px; border-left: 1px solid var(--line); }
-  .pillar svg { width: 40px; height: 40px; stroke: var(--gold); fill: none; stroke-width: 1.3; }
-  .pillar p { color: var(--ink-soft); font-size: 16px; }
-  .pillar .ing { font-size: 13px; letter-spacing: .08em; color: var(--gold-text); text-transform: uppercase; padding-top: 14px; border-top: 1px dashed var(--line); }
-  @media (max-width: 880px) {
-    .pillars { grid-template-columns: 1fr; }
-    .pillar, .pillar + .pillar { padding: 28px 0; border-left: 0; }
-    .pillar + .pillar { border-top: 1px solid var(--line); }
+  /* Big statement band */
+  .facts { background: var(--night); color: var(--cream); }
+  .facts .wrap { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .fact { padding: 36px 24px 36px 0; display: grid; gap: 6px; border-right: 1px solid var(--night-line); }
+  .fact + .fact { padding-left: 24px; }
+  .fact:last-child { border-right: 0; }
+  .fact b { white-space: nowrap; font-family: var(--display); font-size: clamp(34px, 4.4vw, 60px); font-weight: 500; line-height: 1; color: var(--gold); font-variant-numeric: tabular-nums; }
+  .fact span { font-size: 14px; color: var(--muted-night); letter-spacing: .04em; }
+  @media (max-width: 820px) {
+    .facts .wrap { grid-template-columns: 1fr 1fr; }
+    .fact, .fact + .fact { padding: 26px 16px; border-right: 0; border-bottom: 1px solid var(--night-line); }
+    .fact:nth-child(odd) { border-right: 1px solid var(--night-line); padding-left: 0; }
+    .fact:nth-last-child(-n+2) { border-bottom: 0; }
   }
 
-  /* Together */
-  .together { background: var(--stone); }
-  .together .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
-  .together figure { margin: 0; border-radius: var(--radius); overflow: hidden; }
-  .together-copy { display: grid; gap: 20px; min-width: 0; }
-  .together-copy p { color: var(--ink-soft); }
-  .together-copy .btn { justify-self: start; margin-top: 8px; }
-  @media (max-width: 880px) { .together .wrap { grid-template-columns: 1fr; gap: 36px; } }
+  .section { padding-block: 120px; }
+  @media (max-width: 640px) { .section { padding-block: 80px; } }
+  .head-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px 48px; margin-bottom: 56px; }
+  .head-row > div { display: grid; gap: 18px; }
+  .head-row p.lead { max-width: 30em; color: var(--ink-soft); font-size: 18px; font-weight: 300; }
 
-  /* Formula (dark band) */
-  .formula { background: var(--night); color: var(--night-text); }
-  .formula h2 { color: #f4efe6; }
-  .formula .eyebrow { color: var(--gold-bright); }
-  .formula .lead { color: var(--night-text); }
-  .formula-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; align-items: start; }
-  .table-box { overflow-x: auto; min-width: 0; }
-  table { width: 100%; border-collapse: collapse; font-size: 16px; }
-  caption { text-align: left; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-bright); padding-bottom: 14px; }
-  th { text-align: left; font-weight: 500; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #8f8576; padding: 0 0 12px; border-bottom: 1px solid var(--gold); }
-  th:last-child, td:last-child { text-align: right; }
-  td { padding: 15px 0; border-bottom: 1px solid var(--night-line); vertical-align: top; }
-  td:first-child { padding-right: 24px; color: #f4efe6; }
-  td small { display: block; color: #8f8576; font-size: 13px; margin-top: 2px; }
-  td.mg { font-variant-numeric: tabular-nums; color: var(--gold-bright); white-space: nowrap; font-weight: 500; }
-  .dose { background: var(--night-2); border: 1px solid var(--night-line); border-radius: var(--radius); padding: 32px; display: grid; gap: 0; }
-  .dose h3 { color: var(--gold-bright); margin-bottom: 12px; }
-  .dose dl { margin: 0; display: grid; }
-  .dose dl > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--night-line); }
-  .dose dt { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #8f8576; padding-top: 3px; }
-  .dose dd { margin: 0; color: #f4efe6; font-size: 15px; }
-  .dose .note { font-size: 13px; color: #8f8576; margin-top: 18px; line-height: 1.6; }
-  @media (max-width: 880px) { .formula-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 480px) { .dose { padding: 24px 20px; } .dose dl > div { grid-template-columns: 1fr; gap: 2px; } }
+  /* Ingredient tiles */
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .tile { border-radius: var(--r); padding: 28px 26px; min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; position: relative; overflow: hidden; transition: transform .3s; }
+  .tile:hover { transform: translateY(-4px); }
+  .tile .mg { font-family: var(--display); font-size: clamp(64px, 6.4vw, 92px); line-height: .9; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .tile .mg small { font-size: .38em; margin-left: 4px; letter-spacing: .04em; }
+  .tile h3 { font-size: 20px; font-weight: 500; line-height: 1.2; }
+  .tile p { font-size: 15px; line-height: 1.55; opacity: .82; }
+  .tile .latin { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
+  .tile.t-night { background: var(--night); color: var(--cream); }
+  .tile.t-night .mg { color: var(--gold); }
+  .tile.t-gold { background: var(--gold); color: var(--night); }
+  .tile.t-stone { background: var(--stone); color: var(--ink); }
+  .tile.t-white { background: #fffdf8; color: var(--ink); border: 1px solid var(--line); }
+  .tile .peak { position: absolute; right: -20px; bottom: -14px; width: 160px; height: 84px; opacity: .12; }
+  @media (max-width: 1000px) { .tiles { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .tiles { grid-template-columns: 1fr; } .tile { min-height: 0; } }
+  .more-ing { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: var(--ink-soft); }
+  .more-ing .chip { background: transparent; }
+  .more-ing a { font-weight: 500; color: var(--ink); }
 
-  /* Order */
-  .order-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
-  .packs { display: grid; gap: 14px; }
+  /* Full-bleed together */
+  .together { position: relative; background: var(--stone); }
+  .together img { width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 30% 50%; }
+  .together-card { position: absolute; left: max(20px, env(safe-area-inset-left, 0px)); bottom: 32px; background: var(--paper); border-radius: var(--r); padding: 32px; max-width: 440px; display: grid; gap: 16px; box-shadow: 0 20px 60px rgba(20, 17, 13, .18); }
+  .together-card h2 { font-size: clamp(40px, 4.4vw, 60px); }
+  .together-card p { color: var(--ink-soft); }
+  .together-card .btn { justify-self: start; }
+  @media (min-width: 1280px) { .together-card { left: calc((100vw - var(--wrap)) / 2 + 20px); } }
+  @media (max-width: 760px) {
+    .together-card { position: static; max-width: none; border-radius: 0; box-shadow: none; padding: 40px max(20px, env(safe-area-inset-right, 0px)) 56px max(20px, env(safe-area-inset-left, 0px)); background: var(--stone); }
+  }
+
+  /* Product detail (shop) */
+  .pdp { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: start; }
+  .gallery { position: sticky; top: 96px; display: grid; gap: 12px; min-width: 0; }
+  .gallery-main { background: var(--stone); border-radius: var(--r); aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; overflow: hidden; }
+  .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+  .gallery-main img.is-bottle { object-fit: contain; height: 92%; mix-blend-mode: multiply; }
+  .thumbs { display: flex; gap: 12px; }
+  .thumb { width: 88px; height: 88px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); padding: 0; background: var(--stone); cursor: pointer; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; }
+  .thumb.is-bottle img { object-fit: contain; mix-blend-mode: multiply; }
+  .thumb[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+  @media (max-width: 900px) { .pdp { grid-template-columns: 1fr; gap: 36px; } .gallery { position: static; } }
+
+  .buy { display: grid; gap: 22px; min-width: 0; }
+  .buy h2 { font-size: clamp(48px, 5.6vw, 80px); }
+  .buy .sub { color: var(--ink-soft); font-size: 18px; font-weight: 300; }
+  .ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .ticks li { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; }
+  .ticks svg { width: 20px; height: 20px; flex: none; margin-top: 3px; stroke: var(--gold-deep); fill: none; stroke-width: 2; }
+  .packs { display: grid; gap: 12px; }
   .pack { position: relative; display: block; cursor: pointer; }
   .pack input { position: absolute; opacity: 0; pointer-events: none; }
-  .pack-body {
-    display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
-    border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px;
-    background: #fff; transition: border-color .2s, box-shadow .2s;
-  }
+  .pack-body { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; border: 1px solid var(--line); border-radius: 14px; padding: 20px; background: #fffdf8; transition: border-color .2s, box-shadow .2s; }
   .pack input:checked + .pack-body { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
   .pack input:focus-visible + .pack-body { outline: 2px solid var(--gold); outline-offset: 3px; }
   .radio { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--ink-soft); display: grid; place-items: center; }
   .pack input:checked + .pack-body .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
-  .pack-name { font-weight: 500; font-size: 17px; }
+  .pack-name { font-weight: 500; font-size: 17px; display: block; }
   .pack-sub { font-size: 13px; color: var(--ink-soft); }
   .pack-price { text-align: right; font-variant-numeric: tabular-nums; }
-  .pack-price b { display: block; font-family: var(--display); font-size: 30px; font-weight: 600; line-height: 1; }
+  .pack-price b { display: block; font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1; }
   .pack-price s { font-size: 13px; color: var(--ink-soft); }
-  .pack-flag {
-    position: absolute; top: -10px; right: 18px;
-    background: var(--gold); color: var(--night);
-    font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 3px;
-  }
-  .order-notes { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 10px; font-size: 14px; color: var(--ink-soft); }
-  .order-notes li { display: flex; gap: 10px; align-items: baseline; }
-  .order-notes li::before { content: ""; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg) translateY(-2px); flex: none; }
+  .pack-flag { position: absolute; top: -10px; right: 16px; background: var(--gold); color: var(--night); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+  .buy .btn { width: 100%; }
+  .assure { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .assure div { background: var(--stone); border-radius: 12px; padding: 14px 12px; font-size: 13px; line-height: 1.35; display: grid; gap: 6px; justify-items: center; text-align: center; color: var(--ink-soft); }
+  .assure svg { width: 22px; height: 22px; stroke: var(--gold-deep); fill: none; stroke-width: 1.5; }
+  .acc { border-top: 1px solid var(--line); }
+  .acc details { border-bottom: 1px solid var(--line); }
+  .acc summary, .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 18px 0; font-weight: 500; }
+  .acc summary { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; }
+  .acc summary::-webkit-details-marker, .faq summary::-webkit-details-marker { display: none; }
+  .acc summary::after, .faq summary::after { content: "+"; font-family: var(--display); font-size: 26px; line-height: 1; color: var(--gold-deep); transition: transform .2s; }
+  details[open] > summary::after { transform: rotate(45deg); }
+  .acc .body { padding-bottom: 20px; color: var(--ink-soft); font-size: 15px; }
+  .table-box { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font-weight: 500; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); padding: 0 0 10px; border-bottom: 1px solid var(--ink); }
+  th:last-child, td:last-child { text-align: right; }
+  td { padding: 11px 0; border-bottom: 1px solid var(--line); color: var(--ink); vertical-align: top; }
+  td:first-child { padding-right: 16px; }
+  td small { display: block; color: var(--ink-soft); font-size: 12px; }
+  td.mg { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500; }
 
-  .form-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 36px; display: grid; gap: 20px; min-width: 0; }
-  .form-card h3 { font-family: var(--display); font-size: 30px; font-weight: 600; letter-spacing: 0; text-transform: none; }
-  .form-card > p { font-size: 14px; color: var(--ink-soft); margin-top: -12px; }
+  /* Ritual */
+  .ritual { background: var(--night); color: var(--cream); }
+  .ritual h2 { color: var(--cream); font-size: clamp(56px, 11vw, 168px); margin-top: 20px; }
+  .ritual h2 span { color: var(--gold); }
+  .ritual-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 64px; border-top: 1px solid var(--night-line); }
+  .ritual-grid div { padding: 28px 28px 0 0; display: grid; gap: 10px; align-content: start; }
+  .ritual-grid div + div { padding-left: 28px; border-left: 1px solid var(--night-line); }
+  .ritual-grid h3 { font-size: 13px; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); font-weight: 500; }
+  .ritual-grid p { color: var(--muted-night); font-size: 16px; }
+  @media (max-width: 760px) {
+    .ritual-grid { grid-template-columns: 1fr; }
+    .ritual-grid div, .ritual-grid div + div { padding: 24px 0; border-left: 0; }
+    .ritual-grid div + div { border-top: 1px solid var(--night-line); }
+  }
+
+  /* Checkout */
+  .checkout { display: grid; grid-template-columns: 1fr 1.15fr; gap: 64px; align-items: start; }
+  .checkout-intro { display: grid; gap: 20px; position: sticky; top: 96px; }
+  .checkout-intro h2 { font-size: clamp(48px, 6vw, 88px); }
+  .checkout-intro p { color: var(--ink-soft); font-size: 18px; font-weight: 300; max-width: 26em; }
+  .steps { list-style: none; padding: 0; margin: 8px 0 0; display: grid; counter-reset: s; border-top: 1px solid var(--line); }
+  .steps li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); font-size: 15px; color: var(--ink-soft); }
+  .steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--display); font-size: 20px; color: var(--gold-deep); line-height: 1.2; }
+  .steps b { color: var(--ink); font-weight: 500; display: block; }
+  .form-card { background: #fffdf8; border: 1px solid var(--line); border-radius: var(--r); padding: 36px; display: grid; gap: 18px; min-width: 0; }
+  .selected { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--stone); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
+  .selected img { width: 40px; height: 56px; object-fit: contain; mix-blend-mode: multiply; }
+  .selected > div { display: flex; align-items: center; gap: 12px; min-width: 0; line-height: 1.35; }
+  .selected b { font-weight: 500; }
+  .selected a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); white-space: nowrap; }
   .field { display: grid; gap: 6px; }
   .field label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
-  .field input {
-    font: 400 16px var(--sans); color: var(--ink);
-    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 14px 16px; width: 100%;
-  }
-  .field input::placeholder { color: #a39a8c; }
+  .field input { font: 400 16px var(--sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 15px 16px; width: 100%; }
+  .field input::placeholder { color: #a59b8b; }
   .field input:focus { outline: none; border-color: var(--ink); background: #fff; }
   .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
   .consent input { margin-top: 2px; accent-color: var(--ink); width: 16px; height: 16px; flex: none; }
-  .summary { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
-  .summary b { font-family: var(--display); font-size: 28px; color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .form-card .btn { width: 100%; padding-block: 20px; }
-  .result { font-size: 14px; padding: 14px 16px; border-radius: var(--radius); border: 1px solid currentColor; }
+  .summary { display: grid; gap: 8px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+  .summary div { display: flex; justify-content: space-between; }
+  .summary .total { color: var(--ink); font-size: 16px; font-weight: 500; align-items: baseline; }
+  .summary .total b { font-family: var(--display); font-size: 34px; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .form-card .btn { width: 100%; }
+  .result { font-size: 14px; padding: 14px 16px; border-radius: 12px; border: 1px solid currentColor; }
   .result.ok { color: var(--ok); background: #eef5ef; }
   .result.err { color: var(--err); background: #faeeeb; }
   .result.wait { color: var(--ink-soft); background: var(--paper); }
-  @media (max-width: 880px) { .order-grid { grid-template-columns: 1fr; gap: 40px; } }
-  @media (max-width: 480px) {
-    .form-card { padding: 24px 20px; }
-    .row-2 { grid-template-columns: 1fr; }
-    .pack-body { padding: 18px 16px; gap: 14px; }
-    .pack-price b { font-size: 26px; }
-  }
+  @media (max-width: 900px) { .checkout { grid-template-columns: 1fr; gap: 40px; } .checkout-intro { position: static; } }
+  @media (max-width: 480px) { .form-card { padding: 24px 18px; } .row-2 { grid-template-columns: 1fr; } .pack-body { padding: 16px 14px; gap: 12px; } .pack-price b { font-size: 26px; } .assure { grid-template-columns: 1fr; } .assure div { grid-template-columns: auto 1fr; justify-items: start; text-align: left; align-items: center; gap: 12px; } }
 
   /* FAQ */
   .faq { background: var(--stone); }
-  .faq .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: start; }
+  .faq .wrap { display: grid; grid-template-columns: 1fr 1.5fr; gap: 64px; align-items: start; }
+  .faq-head { display: grid; gap: 18px; }
+  .faq h2 { font-size: clamp(48px, 6vw, 88px); }
   .faq-list { border-top: 1px solid var(--ink); min-width: 0; }
-  details { border-bottom: 1px solid var(--line); }
-  summary {
-    list-style: none; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center; gap: 20px;
-    padding: 22px 0; font-size: 18px; font-weight: 500;
-  }
-  summary::-webkit-details-marker { display: none; }
-  summary::after { content: "+"; font-family: var(--display); font-size: 28px; line-height: 1; color: var(--gold-text); transition: transform .2s; }
-  details[open] summary::after { transform: rotate(45deg); }
-  details p { padding-bottom: 22px; color: var(--ink-soft); max-width: 60ch; }
-  @media (max-width: 880px) { .faq .wrap { grid-template-columns: 1fr; gap: 32px; } }
+  .faq summary { font-size: 19px; padding: 22px 0; }
+  .faq details { border-bottom: 1px solid var(--line); }
+  .faq details p { padding-bottom: 22px; color: var(--ink-soft); max-width: 60ch; }
+  @media (max-width: 900px) { .faq .wrap { grid-template-columns: 1fr; gap: 32px; } }
 
   /* Footer */
-  .site-footer { background: var(--night); color: #8f8576; font-size: 13px; padding-block: 56px 40px; }
-  .site-footer .wrap { display: grid; gap: 28px; }
-  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; padding-bottom: 28px; border-bottom: 1px solid var(--night-line); }
-  .site-footer .logo { color: #f4efe6; }
-  .site-footer .logo svg { stroke: var(--gold-bright); }
-  .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
-  .footer-links a { text-decoration: none; color: var(--night-text); }
-  .footer-links a:hover { color: #fff; }
-  .site-footer p { max-width: 90ch; line-height: 1.7; }
+  .site-footer { background: var(--night); color: var(--muted-night); font-size: 13px; padding-block: 72px 32px; overflow: hidden; }
+  .site-footer .wrap { display: grid; gap: 32px; }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
+  .footer-top h3 { font-family: var(--display); font-size: clamp(32px, 3.4vw, 44px); line-height: 1; text-transform: uppercase; color: var(--cream); font-weight: 500; max-width: 12em; }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: start; }
+  .footer-links a { text-decoration: none; color: var(--cream); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+  .footer-links a:hover { color: var(--gold); }
+  .wordmark { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(64px, 17.5vw, 250px); line-height: .8; color: var(--gold); letter-spacing: -.01em; white-space: nowrap; margin-block: 24px 8px; }
+  .site-footer p { max-width: 95ch; line-height: 1.7; }
+  .legal-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--night-line); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .ticker-track { animation: none; }
+    * { transition: none !important; }
+  }
 </style>
 </head>
 <body>
 
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="peaks" viewBox="0 0 76 40"><path d="M2 38 L24 14 L32 22 L44 4 L60 24 L66 18 L74 38" fill="none" stroke-width="3.2" stroke-linejoin="miter" stroke-linecap="square"/></symbol>
+  <symbol id="peaks" viewBox="0 0 76 40"><path d="M2 38 L24 14 L32 22 L44 4 L60 24 L66 18 L74 38" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linejoin="miter" stroke-linecap="square"/></symbol>
+  <symbol id="arrow" viewBox="0 0 18 10"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="tick" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9"/></symbol>
 </svg>
+
+<div class="ticker" role="note" aria-label="Безплатна доставка, плащане при доставка, 14 дни право на отказ">
+  <div class="ticker-track" aria-hidden="true">
+    <span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
+    <span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
+  </div>
+</div>
 
 <header class="site-header">
   <div class="wrap">
+    <nav class="nav" aria-label="Основна навигация">
+      <a href="#sastav">Състав</a>
+      <a href="#produkt">Продукт</a>
+      <a href="#faq">Въпроси</a>
+    </nav>
     <a class="logo" href="#top" aria-label="Norden BioLabs — начало">
-      <svg stroke="currentColor"><use href="#peaks"/></svg>
+      <svg><use href="#peaks"/></svg>
       <span>Norden BioLabs</span>
     </a>
-    <nav class="nav" aria-label="Основна навигация">
-      <a href="#formula">Формулата</a>
-      <a href="#sastav">Състав</a>
-      <a href="#faq">Въпроси</a>
-      <a class="btn btn-dark" href="#order">Поръчай</a>
-    </nav>
+    <a class="btn btn-dark header-cta" href="#produkt">Поръчай</a>
   </div>
 </header>
 
 <main id="top">
   <section class="hero">
     <div class="wrap">
-      <div class="hero-copy">
-        <p class="eyebrow">Daily Performance · За него и за нея</p>
-        <h1>Енергия, фокус и тонус за всеки ден</h1>
-        <p class="lead">Ежедневна формула с адаптогени и стандартизирани растителни екстракти, подбрана за по-спокоен ритъм и повече сили за хората и нещата, които са ви важни.</p>
-        <div class="hero-actions">
-          <a class="btn btn-dark" href="#order">Поръчай сега</a>
-          <a class="btn btn-line" href="#sastav">Виж състава</a>
+      <h1>Daily <span class="gold">Performance</span></h1>
+      <div class="hero-stage">
+        <div class="hero-side">
+          <p class="eyebrow">Енергия · Фокус · Тонус</p>
+          <p>Ежедневна формула с адаптогени и стандартизирани растителни екстракти. За мъже и жени, които искат повече сили за хората и нещата, които са им важни.</p>
+          <div class="chips"><span class="chip">9 съставки</span><span class="chip">2 капсули дневно</span><span class="chip">30 дни</span></div>
         </div>
-        <div class="hero-facts">
-          <div><b>9</b><small>активни съставки</small></div>
-          <div><b>2</b><small>капсули дневно</small></div>
-          <div><b>30</b><small>дни на флакон</small></div>
+        <div class="hero-bottle">
+          <img src="images/bottle.jpg" width="690" height="1086" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
         </div>
-      </div>
-      <div class="hero-visual">
-        <img src="images/product.jpg" width="1448" height="1086" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
-        <span class="tag">Хранителна добавка</span>
+        <div class="hero-side right">
+          <div class="price-tag"><b>22.95 €</b><s>45.90 €</s></div>
+          <small>60 капсули · безплатна доставка</small>
+          <a class="btn btn-dark" href="#produkt">Поръчай сега <svg class="arrow"><use href="#arrow"/></svg></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="strip">
+  <section class="facts on-dark">
     <div class="wrap">
-      <ul>
-        <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 15h3"/></svg>Плащане при доставка</li>
-        <li><svg viewBox="0 0 24 24"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Еконт и Спиди до офис или адрес</li>
-        <li><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h3"/></svg>Всяка съставка с количество</li>
-        <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg>14 дни право на отказ</li>
-      </ul>
+      <div class="fact"><b>400 mg</b><span>L-цитрулин малат на доза</span></div>
+      <div class="fact"><b>KSM-66®</b><span>стандартизиран екстракт от ашваганда</span></div>
+      <div class="fact"><b>15 mg</b><span>цинк като пиколинат</span></div>
+      <div class="fact"><b>0</b><span>скрити „патентовани смеси“</span></div>
     </div>
-  </div>
+  </section>
 
-  <section class="section" id="formula">
+  <section class="section" id="sastav">
     <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Формулата</p>
-        <h2>Три посоки в една капсула</h2>
-        <p class="lead">Съставките са групирани според ролята си. Всяка е в количество, което виждате в таблицата по-долу.</p>
+      <div class="head-row">
+        <div>
+          <p class="eyebrow">Какво има вътре</p>
+          <h2>Четири основни.<br>Пет помощни.</h2>
+        </div>
+        <p class="lead">Всяка съставка е посочена с форма и количество. Ето четирите с най-голяма роля във формулата.</p>
       </div>
-      <div class="pillars">
-        <article class="pillar">
-          <svg viewBox="0 0 40 40"><path d="M20 6c6 8 10 13 10 18a10 10 0 0 1-20 0c0-5 4-10 10-18z"/><path d="M15 25a5 5 0 0 0 5 5"/></svg>
-          <h3>Кръвообращение</h3>
-          <p>L-цитрулин малат и гинко билоба, съставки с дълга история във формули за подкрепа на кръвообращението.</p>
-          <p class="ing">L-Citrulline Malate · Гинко билоба</p>
+      <div class="tiles">
+        <article class="tile t-night">
+          <div class="mg">400<small>mg</small></div>
+          <div>
+            <p class="latin">L-Citrulline Malate</p>
+            <h3>L-цитрулин малат</h3>
+            <p>Аминокиселина, която често се използва във формули за подкрепа на кръвообращението.</p>
+          </div>
+          <svg class="peak"><use href="#peaks"/></svg>
         </article>
-        <article class="pillar">
-          <svg viewBox="0 0 40 40"><path d="M20 34V16"/><path d="M20 22c-7 0-11-5-11-12 7 0 11 5 11 12z"/><path d="M20 18c0-6 4-10 11-10 0 6-4 10-11 10z"/></svg>
-          <h3>Баланс</h3>
-          <p>Адаптогени, които традиционно се използват в Северна Европа и Азия при ежедневно напрежение.</p>
-          <p class="ing">Ашваганда KSM-66® · Родиола · Жен-шен</p>
+        <article class="tile t-gold">
+          <div class="mg">250<small>mg</small></div>
+          <div>
+            <p class="latin">Tribulus terrestris</p>
+            <h3>Бабини зъби</h3>
+            <p>Екстракт, стандартизиран до 40–45% сапонини.</p>
+          </div>
+          <svg class="peak"><use href="#peaks"/></svg>
         </article>
-        <article class="pillar">
-          <svg viewBox="0 0 40 40"><path d="M4 32 L15 16 L20 22 L26 10 L36 32"/><path d="M23 16l3-6 3 6"/></svg>
-          <h3>Тонус</h3>
-          <p>Бабини зъби и цинк. Цинкът допринася за поддържане на нормално ниво на тестостерон в кръвта и за нормалната функция на имунната система.</p>
-          <p class="ing">Tribulus terrestris · Цинков пиколинат</p>
+        <article class="tile t-stone">
+          <div class="mg">200<small>mg</small></div>
+          <div>
+            <p class="latin">Withania somnifera</p>
+            <h3>Ашваганда KSM-66®</h3>
+            <p>Адаптоген, традиционно използван при ежедневно напрежение. Екстракт от корен.</p>
+          </div>
+          <svg class="peak"><use href="#peaks"/></svg>
+        </article>
+        <article class="tile t-white">
+          <div class="mg">15<small>mg</small></div>
+          <div>
+            <p class="latin">Zinc picolinate</p>
+            <h3>Цинк</h3>
+            <p>Допринася за поддържане на нормално ниво на тестостерон в кръвта и за нормалната функция на имунната система.</p>
+          </div>
+          <svg class="peak"><use href="#peaks"/></svg>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="section together">
-    <div class="wrap">
-      <figure>
-        <img src="images/together.webp" width="1671" height="941" loading="lazy" alt="Два флакона Norden BioLabs с капсули върху каменен плот, надпис Better Together">
-      </figure>
-      <div class="together-copy">
-        <p class="eyebrow">Better Together</p>
-        <h2>Една формула за двама</h2>
-        <p>Daily Performance е създадена за мъже и жени. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки.</p>
-        <a class="btn btn-dark" href="#order" data-pick="2">Избери пакет за двама</a>
+      <div class="more-ing">
+        <span>Плюс:</span>
+        <span class="chip">Родиола 80 mg</span><span class="chip">Жен-шен 60 mg</span><span class="chip">Гинко билоба 40 mg</span><span class="chip">Джинджифил 20 mg</span><span class="chip">BioPerine® 5 mg</span>
+        <a href="#full-table" id="openTable">Пълен състав</a>
       </div>
     </div>
   </section>
 
-  <section class="section formula" id="sastav">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Пълен състав</p>
-        <h2>Нищо скрито зад „патентована смес“</h2>
-        <p class="lead">Посочваме всяка съставка, нейната форма и точното количество в дневната доза.</p>
-      </div>
-      <div class="formula-grid">
-        <div class="table-box">
-          <table>
-            <caption>Дневна доза · 2 капсули</caption>
-            <thead><tr><th scope="col">Съставка</th><th scope="col">Количество</th></tr></thead>
-            <tbody>
-              <tr><td>L-Citrulline Malate</td><td class="mg">400 mg</td></tr>
-              <tr><td>Бабини зъби<small>Tribulus terrestris, екстракт 40–45% сапонини</small></td><td class="mg">250 mg</td></tr>
-              <tr><td>Ашваганда KSM-66®<small>екстракт от корен</small></td><td class="mg">200 mg</td></tr>
-              <tr><td>Родиола / Златен корен</td><td class="mg">80 mg</td></tr>
-              <tr><td>Корейски жен-шен<small>Panax ginseng</small></td><td class="mg">60 mg</td></tr>
-              <tr><td>Гинко билоба<small>24% гликозиди</small></td><td class="mg">40 mg</td></tr>
-              <tr><td>Джинджифил<small>корен</small></td><td class="mg">20 mg</td></tr>
-              <tr><td>Цинк<small>като цинков пиколинат, елементарен</small></td><td class="mg">15 mg</td></tr>
-              <tr><td>BioPerine®<small>екстракт от черен пипер</small></td><td class="mg">5 mg</td></tr>
-            </tbody>
-          </table>
+  <section class="together">
+    <img src="images/together.webp" width="1671" height="941" loading="lazy" alt="Два флакона Norden BioLabs с капсули върху каменен плот">
+    <div class="together-card">
+      <p class="eyebrow">За него и за нея</p>
+      <h2>По-добре заедно</h2>
+      <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки.</p>
+      <a class="btn btn-dark" href="#produkt" data-pick="2">Пакет за двама · 39.95 €</a>
+    </div>
+  </section>
+
+  <section class="section" id="produkt">
+    <div class="wrap pdp">
+      <div class="gallery">
+        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.jpg" width="690" height="1086" alt="Флакон Daily Performance"></div>
+        <div class="thumbs">
+          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.jpg" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle.jpg" alt=""></button>
+          <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together.webp" alt=""></button>
         </div>
-        <aside class="dose">
-          <h3>Прием</h3>
-          <dl>
-            <div><dt>Доза</dt><dd>2 капсули веднъж дневно</dd></div>
-            <div><dt>Кога</dt><dd>Сутрин, по време на или след закуска, с вода</dd></div>
-            <div><dt>Курс</dt><dd>1 флакон = 60 капсули = 30 дни</dd></div>
-            <div><dt>Съхранение</dt><dd>На сухо и хладно място, недостъпно за деца</dd></div>
-          </dl>
-          <p class="note">Да не се превишава препоръчителната дневна доза. При бременност, кърмене или прием на лекарства се консултирайте с лекар.</p>
-        </aside>
       </div>
-    </div>
-  </section>
 
-  <section class="section" id="order">
-    <div class="wrap order-grid">
-      <div>
-        <div class="section-head" style="margin-bottom:36px">
-          <p class="eyebrow">Поръчка</p>
-          <h2>Изберете курса си</h2>
-          <p class="lead">Цените са с ДДС. Доставката е безплатна, плащате на куриера при получаване.</p>
-        </div>
+      <div class="buy">
+        <p class="eyebrow">Хранителна добавка · 60 капсули</p>
+        <h2>Daily Performance</h2>
+        <p class="sub">Енергия, фокус и тонус в две капсули сутрин. За мъже и жени.</p>
+        <ul class="ticks">
+          <li><svg><use href="#tick"/></svg>L-цитрулин, ашваганда KSM-66®, бабини зъби и цинк</li>
+          <li><svg><use href="#tick"/></svg>Всяка съставка с точно количество, без скрити смеси</li>
+          <li><svg><use href="#tick"/></svg>Един флакон стига за 30 дни</li>
+        </ul>
+
         <div class="packs" role="radiogroup" aria-label="Пакет">
           <label class="pack">
-            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" form="orderForm" checked>
+            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама" form="orderForm" checked>
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
-              <span><span class="pack-name">2 флакона · За двама</span><br><span class="pack-sub">120 капсули · по 0.33 € на капсула</span></span>
+              <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">120 капсули · по 0.33 € на капсула</span></span>
               <span class="pack-price"><b>39.95 €</b><s>91.80 €</s></span>
             </span>
             <span class="pack-flag">Най-изгоден</span>
           </label>
           <label class="pack">
-            <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" form="orderForm">
+            <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" data-name="1 флакон" form="orderForm">
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
-              <span><span class="pack-name">1 флакон</span><br><span class="pack-sub">60 капсули · 30-дневен курс</span></span>
+              <span><span class="pack-name">1 флакон</span><span class="pack-sub">60 капсули · 30-дневен курс</span></span>
               <span class="pack-price"><b>22.95 €</b><s>45.90 €</s></span>
             </span>
           </label>
         </div>
-        <ul class="order-notes">
-          <li>Обаждаме се за потвърждение преди изпращане</li>
-          <li>Изпращаме с Еконт или Спиди в рамките на 1–2 работни дни</li>
-          <li>Можете да се откажете от поръчката в 14-дневен срок</li>
-        </ul>
+
+        <a class="btn btn-dark" href="#checkout">Към поръчката <svg class="arrow"><use href="#arrow"/></svg></a>
+
+        <div class="assure">
+          <div><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 15h3"/></svg>Плащане при доставка</div>
+          <div><svg viewBox="0 0 24 24"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Безплатна доставка</div>
+          <div><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg>14 дни право на отказ</div>
+        </div>
+
+        <div class="acc">
+          <details id="full-table">
+            <summary>Пълен състав</summary>
+            <div class="body table-box">
+              <table>
+                <thead><tr><th scope="col">Дневна доза · 2 капсули</th><th scope="col">Количество</th></tr></thead>
+                <tbody>
+                  <tr><td>L-Citrulline Malate</td><td class="mg">400 mg</td></tr>
+                  <tr><td>Бабини зъби<small>Tribulus terrestris, екстракт 40–45% сапонини</small></td><td class="mg">250 mg</td></tr>
+                  <tr><td>Ашваганда KSM-66®<small>екстракт от корен</small></td><td class="mg">200 mg</td></tr>
+                  <tr><td>Родиола / Златен корен</td><td class="mg">80 mg</td></tr>
+                  <tr><td>Корейски жен-шен<small>Panax ginseng</small></td><td class="mg">60 mg</td></tr>
+                  <tr><td>Гинко билоба<small>24% гликозиди</small></td><td class="mg">40 mg</td></tr>
+                  <tr><td>Джинджифил<small>корен</small></td><td class="mg">20 mg</td></tr>
+                  <tr><td>Цинк<small>като цинков пиколинат, елементарен</small></td><td class="mg">15 mg</td></tr>
+                  <tr><td>BioPerine®<small>екстракт от черен пипер</small></td><td class="mg">5 mg</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </details>
+          <details>
+            <summary>Прием и съхранение</summary>
+            <div class="body">2 капсули веднъж дневно, сутрин по време на или след закуска, с вода. Да не се превишава препоръчителната дневна доза. Съхранявайте на сухо и хладно място, недостъпно за деца.</div>
+          </details>
+          <details>
+            <summary>Доставка</summary>
+            <div class="body">Изпращаме с Еконт или Спиди до офис или адрес в рамките на 1–2 работни дни след телефонно потвърждение. Плащате на куриера при получаване.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section ritual on-dark">
+    <div class="wrap">
+      <p class="eyebrow">Ежедневният ритуал</p>
+      <h2>2 капсули.<br><span>Всяка сутрин.</span></h2>
+      <div class="ritual-grid">
+        <div><h3>Кога</h3><p>Сутрин, по време на или след закуска, с чаша вода.</p></div>
+        <div><h3>Колко дълго</h3><p>Един флакон е 30-дневен курс. Приемайте всеки ден, без пропуски.</p></div>
+        <div><h3>За кого</h3><p>За възрастни мъже и жени. Не е подходящ при бременност и кърмене.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="checkout">
+    <div class="wrap checkout">
+      <div class="checkout-intro">
+        <p class="eyebrow">Поръчка</p>
+        <h2>Почти готово</h2>
+        <p>Без регистрация и без онлайн плащане. Оставете данни за доставка и ние ще се погрижим за останалото.</p>
+        <ol class="steps">
+          <li><span><b>Попълвате формата</b>Отнема по-малко от минута.</span></li>
+          <li><span><b>Обаждаме ви се</b>Потвърждаваме поръчката и адреса.</span></li>
+          <li><span><b>Плащате при получаване</b>Пратката идва с Еконт или Спиди за 1–2 работни дни.</span></li>
+        </ol>
       </div>
 
       <form id="orderForm" class="form-card" novalidate>
@@ -477,8 +528,10 @@
         <input type="hidden" name="from_name" value="Norden BioLabs Website">
         <input type="hidden" name="Пакет" id="pkgField" value="2 флакона „За двама“ — 39.95 €">
 
-        <h3>Данни за доставка</h3>
-        <p>Без регистрация и без онлайн плащане.</p>
+        <div class="selected">
+          <div><img src="images/bottle.jpg" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
+          <a href="#produkt">Промени</a>
+        </div>
 
         <div class="field">
           <label for="f-name">Име и фамилия</label>
@@ -502,18 +555,26 @@
           <input id="f-consent" type="checkbox" required>
           <span>Съгласен/на съм с <a href="/usloviya">Общите условия</a> и <a href="/poveritelnost">Политиката за поверителност</a>.</span>
         </label>
-        <div class="summary"><span>Общо при доставка</span><b id="sumPrice">39.95 €</b></div>
-        <button type="submit" class="btn btn-dark">Потвърди поръчката</button>
+        <div class="summary">
+          <div><span>Доставка</span><span>Безплатна</span></div>
+          <div class="total"><span>Общо при доставка</span><b id="sumPrice">39.95 €</b></div>
+        </div>
+        <button type="submit" class="btn btn-gold">Потвърди поръчката</button>
         <div id="resultMessage" class="result" role="status" hidden></div>
       </form>
     </div>
   </section>
 
+  <!--
+    ОТЗИВИ: тук добави САМО истински отзиви от клиенти (с тяхно съгласие).
+    Измислени отзиви са подвеждаща реклама и нарушават правилата на Meta и закона.
+  -->
+
   <section class="section faq" id="faq">
     <div class="wrap">
-      <div class="section-head">
+      <div class="faq-head">
         <p class="eyebrow">Въпроси</p>
-        <h2>Често задавани въпроси</h2>
+        <h2>Често питат</h2>
       </div>
       <div class="faq-list">
         <details>
@@ -544,18 +605,17 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
-      <a class="logo" href="#top">
-        <svg><use href="#peaks"/></svg>
-        <span>Norden BioLabs</span>
-      </a>
-      <nav class="footer-links" aria-label="Правна информация">
+      <h3>Повече сили за важните неща</h3>
+      <nav class="footer-links" aria-label="Връзки">
+        <a href="#produkt">Поръчай</a>
+        <a href="#sastav">Състав</a>
         <a href="/usloviya">Общи условия</a>
         <a href="/poveritelnost">Поверителност</a>
-        <a href="#order">Поръчка</a>
       </nav>
     </div>
+    <div class="wordmark" aria-hidden="true">Norden</div>
     <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
-    <p>© 2026 Norden BioLabs. Всички права запазени.</p>
+    <div class="legal-row"><span>© 2026 Norden BioLabs. Всички права запазени.</span><span>Плащане при доставка · Еконт · Спиди</span></div>
   </div>
 </footer>
 
@@ -564,21 +624,37 @@
     var form = document.getElementById('orderForm');
     var pkgField = document.getElementById('pkgField');
     var sum = document.getElementById('sumPrice');
+    var selName = document.getElementById('selName');
     var result = document.getElementById('resultMessage');
     var radios = document.querySelectorAll('input[name="pack"]');
 
     function sync() {
       radios.forEach(function (r) {
-        if (r.checked) { pkgField.value = r.value; sum.textContent = r.dataset.price; }
+        if (r.checked) { pkgField.value = r.value; sum.textContent = r.dataset.price; selName.textContent = r.dataset.name; }
       });
     }
     radios.forEach(function (r) { r.addEventListener('change', sync); });
 
-    // Бутонът „Избери пакет за двама“ маркира пакета
     document.querySelectorAll('[data-pick]').forEach(function (a) {
       a.addEventListener('click', function () {
         document.getElementById('pack-' + a.dataset.pick).checked = true;
         sync();
+      });
+    });
+
+    // „Пълен състав“ отваря таблицата
+    document.getElementById('openTable').addEventListener('click', function () {
+      document.getElementById('full-table').open = true;
+    });
+
+    // Галерия
+    var mainImg = document.getElementById('mainImg');
+    document.querySelectorAll('.thumb').forEach(function (t) {
+      t.addEventListener('click', function () {
+        document.querySelectorAll('.thumb').forEach(function (x) { x.setAttribute('aria-pressed', 'false'); });
+        t.setAttribute('aria-pressed', 'true');
+        mainImg.src = t.dataset.src;
+        mainImg.classList.toggle('is-bottle', t.dataset.bottle === '1');
       });
     });
 
