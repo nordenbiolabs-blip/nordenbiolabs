@@ -29,7 +29,9 @@
 <!-- ИЗМЕРВАНЕ: тук сложи Google Analytics 4 и/или Meta Pixel — само след банер за съгласие с бисквитки. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/bottle-480.webp" imagesrcset="images/bottle-320.webp 320w, images/bottle-480.webp 480w, images/bottle.webp 581w" imagesizes="(max-width: 900px) 70vw, 300px" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
 <!-- ТУК ПОСТАВИ META PIXEL КОДА (след банер за съгласие с бисквитки) -->
 <style>
   /* Layout: магазинна страница с огромна типография — черно, злато и камък като етикета; плочки за съставките, продукт вляво/избор вдясно. */
@@ -153,8 +155,8 @@
   .tile .mg { font-family: var(--display); font-size: clamp(64px, 6.4vw, 92px); line-height: .9; font-weight: 500; font-variant-numeric: tabular-nums; }
   .tile .mg small { font-size: .38em; margin-left: 4px; letter-spacing: .04em; }
   .tile h3 { font-size: 20px; font-weight: 500; line-height: 1.2; }
-  .tile p { font-size: 15px; line-height: 1.55; opacity: .82; }
-  .tile .latin { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; opacity: .7; }
+  .tile p { font-size: 15px; line-height: 1.55; }
+  .tile .latin { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; font-weight: 500; }
   .tile.t-night { background: var(--night); color: var(--cream); }
   .tile.t-night .mg { color: var(--gold); }
   .tile.t-gold { background: var(--gold); color: var(--night); }
@@ -407,7 +409,7 @@
           <div class="chips"><span class="chip">9 съставки</span><span class="chip">1 капсула дневно</span><span class="chip">30 дни</span></div>
         </div>
         <div class="hero-bottle">
-          <img src="images/bottle.webp" width="581" height="1055" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
+          <img src="images/bottle-480.webp" srcset="images/bottle-320.webp 320w, images/bottle-480.webp 480w, images/bottle.webp 581w" sizes="(max-width: 900px) 70vw, 300px" fetchpriority="high" decoding="async" width="581" height="1055" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
         </div>
         <div class="hero-side right">
           <span class="promo">Промоция −23%</span>
@@ -522,7 +524,7 @@
   </section>
 
   <section class="together">
-    <img src="images/together.webp" width="1671" height="941" loading="lazy" alt="Два флакона Norden BioLabs с капсули върху каменен плот">
+    <img src="images/together.webp" srcset="images/together-900.webp 900w, images/together.webp 1671w" sizes="100vw" width="1671" height="941" loading="lazy" decoding="async" alt="Два флакона Norden BioLabs с капсули върху каменен плот">
     <div class="together-card">
       <p class="eyebrow">За него и за нея</p>
       <h2>По-добре заедно</h2>
@@ -534,10 +536,10 @@
   <section class="section" id="produkt">
     <div class="wrap pdp">
       <div class="gallery">
-        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.webp" width="581" height="1055" alt="Флакон Daily Performance"></div>
+        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.webp" width="581" height="1055" loading="lazy" decoding="async" alt="Флакон Daily Performance"></div>
         <div class="thumbs">
-          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.webp" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle.webp" alt=""></button>
-          <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together.webp" alt=""></button>
+          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.webp" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""></button>
+          <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together-900.webp" width="900" height="507" loading="lazy" alt=""></button>
         </div>
       </div>
 
@@ -628,7 +630,7 @@
         <article><svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><h3>Реален контакт</h3><p>Отговаряме лично на имейл, Viber и WhatsApp на +359 897 914 321.</p></article>
       </div>
       <!-- ПОПЪЛНИ: данните на фирмата и производителя -->
-      <p class="trust-legal">Търговец: [Име на фирмата] · ЕИК [номер] · [Адрес]. Производител: [Име и държава на производителя]. <a href="usloviya.html">Общи условия</a> · <a href="poveritelnost.html">Поверителност</a></p>
+      <p class="trust-legal">Търговец: SHOP SHOPS Ltd. · ЕИК [номер] · [Адрес]. Производител: [Име и държава на производителя]. <a href="usloviya.html">Общи условия</a> · <a href="poveritelnost.html">Поверителност</a></p>
     </div>
   </section>
 
@@ -647,7 +649,7 @@
 
       <div class="form-card">
         <div class="selected">
-          <div><img src="images/bottle.webp" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
+          <div><img src="images/bottle-320.webp" width="320" height="581" loading="lazy" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
           <a href="#produkt">Промени</a>
         </div>
         <div class="summary">
