@@ -145,11 +145,11 @@
   /* Full-bleed together */
   .together { position: relative; background: var(--stone); }
   .together img { width: 100%; height: clamp(320px, 56vw, 760px); object-fit: cover; object-position: 30% 50%; }
-  .together-card { position: absolute; left: max(20px, env(safe-area-inset-left, 0px)); bottom: 32px; background: var(--paper); border-radius: var(--r); padding: 32px; max-width: 440px; display: grid; gap: 16px; box-shadow: 0 20px 60px rgba(20, 17, 13, .18); }
+  .together-card { position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: 32px; background: var(--paper); border-radius: var(--r); padding: 32px; max-width: 440px; display: grid; gap: 16px; box-shadow: 0 20px 60px rgba(20, 17, 13, .18); }
   .together-card h2 { font-size: clamp(40px, 4.4vw, 60px); }
   .together-card p { color: var(--ink-soft); }
   .together-card .btn { justify-self: start; }
-  @media (min-width: 1280px) { .together-card { left: calc((100vw - var(--wrap)) / 2 + 20px); } }
+  @media (min-width: 1280px) { .together-card { right: calc((100vw - var(--wrap)) / 2 + 20px); } }
   @media (max-width: 760px) {
     .together-card { position: static; max-width: none; border-radius: 0; box-shadow: none; padding: 40px max(20px, env(safe-area-inset-right, 0px)) 56px max(20px, env(safe-area-inset-left, 0px)); background: var(--stone); }
   }
@@ -249,7 +249,8 @@
   .channel-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--stone); display: grid; place-items: center; flex: none; }
   .channel-icon svg { width: 22px; height: 22px; fill: none; stroke: var(--gold-deep); stroke-width: 1.5; stroke-linejoin: round; }
   .channel-icon.viber { background: #7360f2; }
-  .channel-icon.viber svg { stroke: #fff; }
+  .channel-icon.viber svg, .channel-icon.wa svg { stroke: #fff; }
+  .channel-icon.wa { background: #25d366; }
   .copy-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
   .copy-row .value { font-size: 19px; font-weight: 500; color: var(--ink); user-select: all; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
   .copy { font: 500 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
@@ -520,7 +521,7 @@
       <div class="checkout-intro">
         <p class="eyebrow">Поръчка</p>
         <h2>Пишете ни</h2>
-        <p>Поръчките приемаме по Viber и имейл. Без регистрация и без онлайн плащане.</p>
+        <p>Поръчките приемаме по имейл, Viber и WhatsApp. Без регистрация и без онлайн плащане.</p>
         <ol class="steps">
           <li><span><b>Пишете ни</b>Кажете кой пакет искате, име, телефон и офис на Еконт/Спиди или адрес.</span></li>
           <li><span><b>Потвърждаваме</b>Отговаряме ви и потвърждаваме поръчката.</span></li>
@@ -548,6 +549,14 @@
 
         <div class="channel">
           <div class="channel-head">
+            <span class="channel-icon wa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19z"/><path d="M9 8.5c.3 2.4 2.1 4.2 4.5 4.5l.9-1.2 1.6.8-.4 1.4c-3.6 0-6.6-3-6.6-6.6l1.4-.4.8 1.6z"/></svg></span>
+            <div><b>WhatsApp</b><span class="copy-row"><span class="value">+359 897 914 321</span><button type="button" class="copy" data-copy="+359897914321">Копирай</button></span></div>
+          </div>
+          <a class="btn btn-dark" id="waBtn" href="https://wa.me/359897914321" target="_blank" rel="noopener">Пиши ни в WhatsApp</a>
+        </div>
+
+        <div class="channel">
+          <div class="channel-head">
             <span class="channel-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg></span>
             <div><b>Имейл</b><span class="copy-row"><span class="value">nordenbiolabs@gmail.com</span><button type="button" class="copy" data-copy="nordenbiolabs@gmail.com">Копирай</button></span></div>
           </div>
@@ -559,7 +568,7 @@
           <textarea id="msg" rows="7" readonly></textarea>
           <button type="button" class="copy copy-msg" id="copyMsg">Копирай съобщението</button>
         </div>
-        <p class="hint">Поставете съобщението във Viber или имейла и попълнете данните си.</p>
+        <p class="hint">WhatsApp и имейлът се отварят с готовото съобщение. За Viber го копирайте и поставете в чата.</p>
       </div>
     </div>
   </section>
@@ -590,7 +599,7 @@
         </details>
         <details>
           <summary>Как да поръчам?</summary>
-          <p>Пишете ни във Viber на +359 897 914 321 или на nordenbiolabs@gmail.com. Кажете кой пакет искате, име, телефон и офис на Еконт/Спиди или адрес. Потвърждаваме и изпращаме, а плащате на куриера при получаване.</p>
+          <p>Пишете ни на nordenbiolabs@gmail.com или във Viber или WhatsApp на +359 897 914 321. Кажете кой пакет искате, име, телефон и офис на Еконт/Спиди или адрес. Потвърждаваме и изпращаме, а плащате на куриера при получаване.</p>
         </details>
         <details>
           <summary>Мога ли да върна продукта?</summary>
@@ -614,7 +623,7 @@
     </div>
     <div class="wordmark" aria-hidden="true">Norden</div>
     <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
-    <div class="footer-contact"><span>Viber: +359 897 914 321</span><span>Имейл: nordenbiolabs@gmail.com</span></div>
+    <div class="footer-contact"><span>Viber и WhatsApp: +359 897 914 321</span><span>Имейл: nordenbiolabs@gmail.com</span></div>
     <div class="legal-row"><span>© 2026 Norden BioLabs. Всички права запазени.</span><span>Плащане при доставка · Еконт · Спиди</span></div>
   </div>
 </footer>
@@ -626,6 +635,7 @@
     var selName = document.getElementById('selName');
     var msg = document.getElementById('msg');
     var mailBtn = document.getElementById('mailBtn');
+    var waBtn = document.getElementById('waBtn');
     var radios = document.querySelectorAll('input[name="pack"]');
 
     // Пакетът влиза в готовото съобщение и в имейла
@@ -639,6 +649,7 @@
         mailBtn.href = 'mailto:' + EMAIL +
           '?subject=' + encodeURIComponent('Поръчка Daily Performance — ' + r.dataset.name) +
           '&body=' + encodeURIComponent(msg.value);
+        waBtn.href = 'https://wa.me/359897914321?text=' + encodeURIComponent(msg.value);
       });
     }
     radios.forEach(function (r) { r.addEventListener('change', sync); });
