@@ -3,8 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Norden BioLabs</title>
-<meta name="description" content="Daily Performance от Norden BioLabs — хранителна добавка с L-цитрулин, ашваганда KSM-66®, бабини зъби и цинк. Прозрачен състав, плащане при доставка.">
+<title>Daily Performance | Norden BioLabs — хранителна добавка за енергия и тонус</title>
+<meta name="description" content="Daily Performance от Norden BioLabs — хранителна добавка с L-цитрулин, ашваганда, бабини зъби и цинк. Прозрачен състав, плащане при доставка.">
+<link rel="canonical" href="https://nordenbiolabs-blip.github.io/nordenbiolabs/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#14110d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 40'%3E%3Cpath d='M2 38 L24 14 L32 22 L44 4 L60 24 L66 18 L74 38' fill='none' stroke='%23c9a35a' stroke-width='5'/%3E%3C/svg%3E">
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="Norden BioLabs">
+<meta property="og:locale" content="bg_BG">
+<meta property="og:title" content="Daily Performance — Norden BioLabs">
+<meta property="og:description" content="Хранителна добавка с L-цитрулин, ашваганда, бабини зъби и цинк. 30 капсули за 22.95 €, безплатна доставка, плащане при получаване.">
+<meta property="og:url" content="https://nordenbiolabs-blip.github.io/nordenbiolabs/">
+<meta property="og:image" content="https://nordenbiolabs-blip.github.io/nordenbiolabs/images/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Daily Performance","brand":{"@type":"Brand","name":"Norden BioLabs"},
+"description":"Хранителна добавка с L-цитрулин малат, бабини зъби, ашваганда и цинк. 30 капсули, по 1 капсула дневно.",
+"image":"https://nordenbiolabs-blip.github.io/nordenbiolabs/images/bottle.webp",
+"offers":[{"@type":"Offer","name":"1 флакон, 30 капсули","price":"22.95","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://nordenbiolabs-blip.github.io/nordenbiolabs/#produkt"},
+{"@type":"Offer","name":"2 флакона, 60 капсули","price":"39.95","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://nordenbiolabs-blip.github.io/nordenbiolabs/#produkt"}]}
+</script>
+<!-- ИЗМЕРВАНЕ: тук сложи Google Analytics 4 и/или Meta Pixel — само след банер за съгласие с бисквитки. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -78,17 +100,18 @@
 
   /* Hero */
   .hero { position: relative; padding-block: 40px 0; overflow: hidden; }
-  .hero h1 { font-size: clamp(64px, 15.5vw, 228px); text-align: center; color: var(--ink); position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(44px, 14.2vw, 228px); text-align: center; color: var(--ink); position: relative; z-index: 1; }
   .hero h1 .gold { color: var(--gold); display: block; }
-  .hero-stage { position: relative; display: grid; grid-template-columns: 1fr minmax(240px, 380px) 1fr; align-items: end; gap: 32px; margin-top: clamp(-150px, -9vw, -40px); }
-  .hero-bottle { position: relative; z-index: 2; mix-blend-mode: multiply; }
+  .hero-stage { position: relative; display: grid; grid-template-columns: 1fr minmax(220px, 300px) 1fr; align-items: end; gap: 32px; margin-top: clamp(-150px, -9vw, -40px); }
+  .hero-bottle { position: relative; z-index: 2; }
+  .hero-bottle img { filter: drop-shadow(0 30px 40px rgba(20, 17, 13, .22)); }
   .hero-bottle img { width: 100%; }
   .hero-side { padding-bottom: 72px; display: grid; gap: 18px; align-content: end; min-width: 0; }
   .hero-side p { font-size: 18px; color: var(--ink-soft); max-width: 22em; font-weight: 300; }
   .hero-side.right { justify-items: end; text-align: right; }
   .price-tag { display: flex; align-items: baseline; gap: 12px; }
   .price-tag b { font-family: var(--display); font-size: 44px; font-weight: 500; line-height: 1; }
-  .price-tag s { color: var(--ink-soft); font-size: 15px; }
+
   .hero-side small { font-size: 13px; color: var(--ink-soft); letter-spacing: .04em; }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; background: #fffaf2; }
@@ -159,11 +182,11 @@
   .gallery { position: sticky; top: 96px; display: grid; gap: 12px; min-width: 0; }
   .gallery-main { background: var(--stone); border-radius: var(--r); aspect-ratio: 1 / 1; max-width: 100%; display: grid; place-items: center; overflow: hidden; }
   .gallery-main img { width: 100%; height: 100%; object-fit: cover; }
-  .gallery-main img.is-bottle { object-fit: contain; height: 92%; mix-blend-mode: multiply; }
+  .gallery-main img.is-bottle { object-fit: contain; height: 88%; }
   .thumbs { display: flex; gap: 12px; }
   .thumb { width: 88px; height: 88px; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); padding: 0; background: var(--stone); cursor: pointer; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .thumb.is-bottle img { object-fit: contain; mix-blend-mode: multiply; }
+  .thumb.is-bottle img { object-fit: contain; padding: 6px; }
   .thumb[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
   @media (max-width: 900px) { .pdp { grid-template-columns: 1fr; gap: 36px; } .gallery { position: static; } }
 
@@ -185,7 +208,8 @@
   .pack-sub { font-size: 13px; color: var(--ink-soft); }
   .pack-price { text-align: right; font-variant-numeric: tabular-nums; }
   .pack-price b { display: block; font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1; }
-  .pack-price s { font-size: 13px; color: var(--ink-soft); }
+  .pack-price .save { font-size: 13px; color: var(--ok); font-weight: 500; }
+  .pack-price .per { font-size: 13px; color: var(--ink-soft); }
   .pack-flag { position: absolute; top: -10px; right: 16px; background: var(--gold); color: var(--night); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
   .buy .btn { width: 100%; }
   .assure { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
@@ -234,7 +258,7 @@
   .steps b { color: var(--ink); font-weight: 500; display: block; }
   .form-card { background: #fffdf8; border: 1px solid var(--line); border-radius: var(--r); padding: 36px; display: grid; gap: 18px; min-width: 0; }
   .selected { display: flex; justify-content: space-between; align-items: center; gap: 16px; background: var(--stone); border-radius: 12px; padding: 12px 16px; font-size: 14px; }
-  .selected img { width: 40px; height: 56px; object-fit: contain; mix-blend-mode: multiply; }
+  .selected img { width: 40px; height: 56px; object-fit: contain; }
   .selected > div { display: flex; align-items: center; gap: 12px; min-width: 0; line-height: 1.35; }
   .selected b { font-weight: 500; }
   .selected a { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); white-space: nowrap; }
@@ -253,7 +277,7 @@
   .channel-icon.wa { background: #25d366; }
   .copy-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
   .copy-row .value { font-size: 19px; font-weight: 500; color: var(--ink); user-select: all; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
-  .copy { font: 500 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); background: none; border: 0; padding: 4px 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .copy { font: 500 12px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--gold-deep); background: none; border: 0; padding: 0; min-height: 44px; display: inline-flex; align-items: center; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
   .copy:hover { color: var(--ink); }
   .copy-msg { justify-self: start; }
   .hint { font-size: 13px; color: var(--ink-soft); margin-top: -6px; }
@@ -282,12 +306,22 @@
   .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; }
   .footer-top h3 { font-family: var(--display); font-size: clamp(32px, 3.4vw, 44px); line-height: 1; text-transform: uppercase; color: var(--cream); font-weight: 500; max-width: 12em; }
   .footer-links { display: flex; flex-wrap: wrap; gap: 24px; align-items: start; }
-  .footer-links a { text-decoration: none; color: var(--cream); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
+  .footer-links a { padding-block: 10px; text-decoration: none; color: var(--cream); font-size: 14px; letter-spacing: .08em; text-transform: uppercase; }
   .footer-links a:hover { color: var(--gold); }
   .wordmark { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(64px, 17.5vw, 250px); line-height: .8; color: var(--gold); letter-spacing: -.01em; white-space: nowrap; margin-block: 24px 8px; }
   .site-footer p { max-width: 95ch; line-height: 1.7; }
+  .trader { color: var(--cream); }
   .legal-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--night-line); }
   .footer-contact { display: flex; flex-wrap: wrap; gap: 8px 32px; color: var(--cream); font-size: 16px; }
+
+  @media (max-width: 560px) {
+    body { font-size: 16px; }
+    .chip { font-size: 13px; }
+    .pack-sub, .pack-price .save, .pack-price .per, .hero-side small { font-size: 14px; }
+    .gallery-main { aspect-ratio: 4 / 3.4; }
+    .more-ing a { padding-block: 10px; }
+    .tile { padding: 24px 22px; }
+  }
 
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -338,11 +372,11 @@
           <div class="chips"><span class="chip">9 съставки</span><span class="chip">1 капсула дневно</span><span class="chip">30 дни</span></div>
         </div>
         <div class="hero-bottle">
-          <img src="images/bottle.jpg" width="690" height="1086" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
+          <img src="images/bottle.webp" width="581" height="1055" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
         </div>
         <div class="hero-side right">
-          <div class="price-tag"><b>22.95 €</b><s>45.90 €</s></div>
-          <small>30 капсули · безплатна доставка</small>
+          <div class="price-tag"><b>22.95 €</b></div>
+          <small>30 капсули · 0.77 € на ден · безплатна доставка</small>
           <a class="btn btn-dark order-mail" data-pick="1" href="mailto:nordenbiolabs@gmail.com">Поръчай сега <svg class="arrow"><use href="#arrow"/></svg></a>
         </div>
       </div>
@@ -352,7 +386,7 @@
   <section class="facts on-dark">
     <div class="wrap">
       <div class="fact"><b>400 mg</b><span>L-цитрулин малат на доза</span></div>
-      <div class="fact"><b>KSM-66®</b><span>стандартизиран екстракт от ашваганда</span></div>
+      <div class="fact"><b>200 mg</b><span>ашваганда, екстракт от корен</span></div>
       <div class="fact"><b>15 mg</b><span>цинк като пиколинат</span></div>
       <div class="fact"><b>0</b><span>скрити „патентовани смеси“</span></div>
     </div>
@@ -390,7 +424,7 @@
           <div class="mg">200<small>mg</small></div>
           <div>
             <p class="latin">Withania somnifera</p>
-            <h3>Ашваганда KSM-66®</h3>
+            <h3>Ашваганда</h3>
             <p>Адаптоген, традиционно използван при ежедневно напрежение. Екстракт от корен.</p>
           </div>
           <svg class="peak"><use href="#peaks"/></svg>
@@ -426,9 +460,9 @@
   <section class="section" id="produkt">
     <div class="wrap pdp">
       <div class="gallery">
-        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.jpg" width="690" height="1086" alt="Флакон Daily Performance"></div>
+        <div class="gallery-main"><img id="mainImg" class="is-bottle" src="images/bottle.webp" width="581" height="1055" alt="Флакон Daily Performance"></div>
         <div class="thumbs">
-          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.jpg" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle.jpg" alt=""></button>
+          <button type="button" class="thumb is-bottle" aria-pressed="true" data-src="images/bottle.webp" data-bottle="1" aria-label="Снимка на флакона"><img src="images/bottle.webp" alt=""></button>
           <button type="button" class="thumb" aria-pressed="false" data-src="images/together.webp" data-bottle="0" aria-label="Снимка на два флакона"><img src="images/together.webp" alt=""></button>
         </div>
       </div>
@@ -438,7 +472,7 @@
         <h2>Daily Performance</h2>
         <p class="sub">Енергия, фокус и тонус в една капсула сутрин. За мъже и жени.</p>
         <ul class="ticks">
-          <li><svg><use href="#tick"/></svg>L-цитрулин, ашваганда KSM-66®, бабини зъби и цинк</li>
+          <li><svg><use href="#tick"/></svg>L-цитрулин, ашваганда, бабини зъби и цинк</li>
           <li><svg><use href="#tick"/></svg>Всяка съставка с точно количество, без скрити смеси</li>
           <li><svg><use href="#tick"/></svg>Един флакон стига за 30 дни</li>
         </ul>
@@ -448,8 +482,8 @@
             <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" data-name="2 флакона · За двама" checked>
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
-              <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">60 капсули · 60-дневен курс</span></span>
-              <span class="pack-price"><b>39.95 €</b><s>91.80 €</s></span>
+              <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">60 капсули · 0.67 € на ден</span></span>
+              <span class="pack-price"><b>39.95 €</b><span class="save">Спестявате 5.95 €</span></span>
             </span>
             <span class="pack-flag">Най-изгоден</span>
           </label>
@@ -458,7 +492,7 @@
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
               <span><span class="pack-name">1 флакон</span><span class="pack-sub">30 капсули · 30-дневен курс</span></span>
-              <span class="pack-price"><b>22.95 €</b><s>45.90 €</s></span>
+              <span class="pack-price"><b>22.95 €</b><span class="per">0.77 € на ден</span></span>
             </span>
           </label>
         </div>
@@ -480,7 +514,7 @@
                 <tbody>
                   <tr><td>L-Citrulline Malate</td><td class="mg">400 mg</td></tr>
                   <tr><td>Бабини зъби<small>Tribulus terrestris, екстракт 40–45% сапонини</small></td><td class="mg">250 mg</td></tr>
-                  <tr><td>Ашваганда KSM-66®<small>екстракт от корен</small></td><td class="mg">200 mg</td></tr>
+                  <tr><td>Ашваганда NRD200<small>екстракт от корен</small></td><td class="mg">200 mg</td></tr>
                   <tr><td>Родиола / Златен корен</td><td class="mg">80 mg</td></tr>
                   <tr><td>Корейски жен-шен<small>Panax ginseng</small></td><td class="mg">60 mg</td></tr>
                   <tr><td>Гинко билоба<small>24% гликозиди</small></td><td class="mg">40 mg</td></tr>
@@ -531,7 +565,7 @@
 
       <div class="form-card">
         <div class="selected">
-          <div><img src="images/bottle.jpg" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
+          <div><img src="images/bottle.webp" alt=""><span>Daily Performance<br><b id="selName">2 флакона · За двама</b></span></div>
           <a href="#produkt">Промени</a>
         </div>
         <div class="summary">
@@ -603,7 +637,7 @@
         </details>
         <details>
           <summary>Мога ли да върна продукта?</summary>
-          <p>Да. Имате право да се откажете от покупката в 14-дневен срок от получаването, съгласно Закона за защита на потребителите. Подробностите са в Общите условия.</p>
+          <p>Да. Имате право да се откажете от покупката в 14-дневен срок от получаването, съгласно Закона за защита на потребителите. Подробностите са в <a href="usloviya.html">Общите условия</a>.</p>
         </details>
       </div>
     </div>
@@ -617,13 +651,15 @@
       <nav class="footer-links" aria-label="Връзки">
         <a class="order-mail" href="mailto:nordenbiolabs@gmail.com">Поръчай</a>
         <a href="#sastav">Състав</a>
-        <a href="/usloviya">Общи условия</a>
-        <a href="/poveritelnost">Поверителност</a>
+        <a href="usloviya.html">Общи условия</a>
+        <a href="poveritelnost.html">Поверителност</a>
       </nav>
     </div>
     <div class="wordmark" aria-hidden="true">Norden</div>
     <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
     <div class="footer-contact"><span>Viber и WhatsApp: +359 897 914 321</span><span>Имейл: nordenbiolabs@gmail.com</span></div>
+    <!-- ПОПЪЛНИ: данните на фирмата са задължителни за онлайн търговия (ЗЗП, ЗЕТ) -->
+    <p class="trader">Търговец: [Име на фирмата] · ЕИК [номер] · [Адрес на управление]. Производител: [Име и държава на производителя].</p>
     <div class="legal-row"><span>© 2026 Norden BioLabs. Всички права запазени.</span><span>Плащане при доставка · Еконт · Спиди</span></div>
   </div>
 </footer>
