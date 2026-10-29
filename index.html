@@ -181,6 +181,9 @@
   .together-card { display: grid; gap: 16px; min-width: 0; }
   .together-card h2 { font-size: clamp(40px, 4.4vw, 60px); }
   .together-card p { color: var(--ink-soft); }
+  .couple { display: flex; align-items: center; gap: 10px; }
+  .couple svg { width: 22px; height: 36px; fill: var(--gold-deep); flex: none; }
+  .couple svg + svg { margin-left: -4px; margin-right: 6px; }
   .together-card .btn { justify-self: start; }
   @media (max-width: 900px) { .together .wrap { grid-template-columns: 1fr; gap: 32px; } .together { padding-block: 0 56px; } .together figure { border-radius: 0; margin-inline: calc(-1 * max(20px, env(safe-area-inset-left, 0px))); } }
 
@@ -532,8 +535,12 @@
     <div class="wrap">
       <figure><img src="images/together.webp" srcset="images/together-900.webp 900w, images/together.webp 1536w" sizes="(max-width: 900px) 100vw, 760px" width="1536" height="1024" loading="lazy" decoding="async" alt="Два флакона Norden BioLabs с капсули върху камък сред зеленина"></figure>
       <div class="together-card">
-        <p class="eyebrow">За него и за нея</p>
-        <h2>По-добро заедно</h2>
+        <p class="eyebrow couple">
+          <svg viewBox="0 0 24 40" aria-hidden="true"><circle cx="12" cy="5" r="4"/><path d="M5 12h14v13h-3v13h-3.2V27h-1.6v11H8V25H5z"/></svg>
+          <svg viewBox="0 0 24 40" aria-hidden="true"><circle cx="12" cy="5" r="4"/><path d="M8.5 12h7L20 27h-4.5v11h-2.7V29h-1.6v9H8.5V27H4z"/></svg>
+          За него и за нея
+        </p>
+        <h2>По-добре заедно</h2>
         <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки, за 39.95 € вместо 59.80 €.</p>
         <a class="btn btn-dark order-mail" data-pick="2" href="mailto:nordenbiolabs@gmail.com">Пакет за двама · 39.95 €</a>
       </div>
