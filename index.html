@@ -110,6 +110,8 @@
   .hero-side p { font-size: 18px; color: var(--ink-soft); max-width: 22em; font-weight: 300; }
   .hero-side.right { justify-items: end; text-align: right; }
   .price-tag { display: flex; align-items: baseline; gap: 12px; }
+  .promo { background: var(--gold); color: var(--night); font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+  .price-tag s { color: var(--ink-soft); font-size: 18px; }
   .price-tag b { font-family: var(--display); font-size: 44px; font-weight: 500; line-height: 1; }
 
   .hero-side small { font-size: 13px; color: var(--ink-soft); letter-spacing: .04em; }
@@ -208,6 +210,7 @@
   .pack-sub { font-size: 13px; color: var(--ink-soft); }
   .pack-price { text-align: right; font-variant-numeric: tabular-nums; }
   .pack-price b { display: block; font-family: var(--display); font-size: 30px; font-weight: 500; line-height: 1; }
+  .pack-price s { display: block; font-size: 13px; color: var(--ink-soft); }
   .pack-price .save { font-size: 13px; color: var(--ok); font-weight: 500; }
   .pack-price .per { font-size: 13px; color: var(--ink-soft); }
   .pack-flag { position: absolute; top: -10px; right: 16px; background: var(--gold); color: var(--night); font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
@@ -231,6 +234,38 @@
   td:first-child { padding-right: 16px; }
   td small { display: block; color: var(--ink-soft); font-size: 12px; }
   td.mg { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 500; }
+
+  /* Benefits */
+  .benefits-head { display: grid; gap: 18px; margin-bottom: 40px; }
+  .benefits { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--ink); margin-bottom: 120px; }
+  .benefits article { padding: 28px 24px 0 0; display: grid; gap: 12px; align-content: start; min-width: 0; }
+  .benefits article + article { padding-left: 24px; border-left: 1px solid var(--line); }
+  .benefits svg { width: 40px; height: 40px; fill: none; stroke: var(--gold-deep); stroke-width: 1.4; }
+  .benefits h3 { font-size: 14px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .benefits p { font-size: 16px; color: var(--ink-soft); }
+  @media (max-width: 1000px) {
+    .benefits { grid-template-columns: 1fr 1fr; }
+    .benefits article, .benefits article + article { padding: 24px 16px 24px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    .benefits article:nth-child(even) { padding-left: 16px; border-left: 1px solid var(--line); }
+  }
+  @media (max-width: 560px) {
+    .benefits { grid-template-columns: 1fr; margin-bottom: 80px; }
+    .benefits article, .benefits article:nth-child(even) { padding: 22px 0; border-left: 0; }
+  }
+
+  /* Trust */
+  .trust { background: var(--night); color: var(--cream); }
+  .trust h2 { color: var(--cream); }
+  .trust .head-row p.lead { color: var(--muted-night); }
+  .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .trust-grid article { background: var(--night-2); border: 1px solid var(--night-line); border-radius: var(--r); padding: 28px 24px; display: grid; gap: 10px; align-content: start; }
+  .trust-grid svg { width: 28px; height: 28px; fill: none; stroke: var(--gold); stroke-width: 1.4; margin-bottom: 6px; }
+  .trust-grid h3 { font-size: 18px; font-weight: 500; }
+  .trust-grid p { font-size: 15px; color: var(--muted-night); }
+  .trust-legal { margin-top: 32px; font-size: 13px; color: var(--muted-night); }
+  .trust-legal a { color: var(--gold); }
+  @media (max-width: 1000px) { .trust-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .trust-grid { grid-template-columns: 1fr; } }
 
   /* Ritual */
   .ritual { background: var(--night); color: var(--cream); }
@@ -310,7 +345,6 @@
   .footer-links a:hover { color: var(--gold); }
   .wordmark { font-family: var(--display); font-weight: 600; text-transform: uppercase; font-size: clamp(64px, 17.5vw, 250px); line-height: .8; color: var(--gold); letter-spacing: -.01em; white-space: nowrap; margin-block: 24px 8px; }
   .site-footer p { max-width: 95ch; line-height: 1.7; }
-  .trader { color: var(--cream); }
   .legal-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; padding-top: 24px; border-top: 1px solid var(--night-line); }
   .footer-contact { display: flex; flex-wrap: wrap; gap: 8px 32px; color: var(--cream); font-size: 16px; }
 
@@ -341,16 +375,17 @@
 
 <div class="ticker" role="note" aria-label="Безплатна доставка, плащане при доставка, 14 дни право на отказ">
   <div class="ticker-track" aria-hidden="true">
-    <span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
-    <span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
+    <span>Промоция до −33%</span><span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
+    <span>Промоция до −33%</span><span>Безплатна доставка</span><span>Плащане при доставка</span><span>Еконт и Спиди</span><span>14 дни право на отказ</span><span>Прозрачен състав</span>
   </div>
 </div>
 
 <header class="site-header">
   <div class="wrap">
     <nav class="nav" aria-label="Основна навигация">
-      <a href="#sastav">Състав</a>
-      <a href="#produkt">Продукт</a>
+      <a href="#sastav">Ползи и състав</a>
+      <a href="#produkt">Цена</a>
+      <a href="#doverie">Доверие</a>
       <a href="#faq">Въпроси</a>
     </nav>
     <a class="logo" href="#top" aria-label="Norden BioLabs — начало">
@@ -375,7 +410,8 @@
           <img src="images/bottle.webp" width="581" height="1055" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
         </div>
         <div class="hero-side right">
-          <div class="price-tag"><b>22.95 €</b></div>
+          <span class="promo">Промоция −23%</span>
+          <div class="price-tag"><b>22.95 €</b><s>29.90 €</s></div>
           <small>30 капсули · 0.77 € на ден · безплатна доставка</small>
           <a class="btn btn-dark order-mail" data-pick="1" href="mailto:nordenbiolabs@gmail.com">Поръчай сега <svg class="arrow"><use href="#arrow"/></svg></a>
         </div>
@@ -394,6 +430,32 @@
 
   <section class="section" id="sastav">
     <div class="wrap">
+      <div class="benefits-head">
+        <p class="eyebrow">Ползи</p>
+        <h2>Какво дава формулата</h2>
+      </div>
+      <div class="benefits">
+        <article>
+          <svg viewBox="0 0 40 40"><path d="M4 32 L15 16 L20 22 L26 10 L36 32"/><path d="M23 16l3-6 3 6"/></svg>
+          <h3>Тонус</h3>
+          <p>Цинкът допринася за поддържане на нормално ниво на тестостерон в кръвта. Бабините зъби се използват традиционно във формули за жизненост.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 40 40"><path d="M20 34V16"/><path d="M20 22c-7 0-11-5-11-12 7 0 11 5 11 12z"/><path d="M20 18c0-6 4-10 11-10 0 6-4 10-11 10z"/></svg>
+          <h3>Баланс</h3>
+          <p>Ашваганда и родиола са адаптогени, които традиционно се използват при ежедневно напрежение.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 40 40"><path d="M20 6c6 8 10 13 10 18a10 10 0 0 1-20 0c0-5 4-10 10-18z"/><path d="M15 25a5 5 0 0 0 5 5"/></svg>
+          <h3>Кръвообращение</h3>
+          <p>L-цитрулин малат и гинко билоба се използват във формули за подкрепа на кръвообращението.</p>
+        </article>
+        <article>
+          <svg viewBox="0 0 40 40"><path d="M20 5l12 5v9c0 8-5 13-12 16-7-3-12-8-12-16v-9z"/><path d="M14 20l4 4 8-8"/></svg>
+          <h3>Имунитет</h3>
+          <p>Цинкът допринася за нормалната функция на имунната система.</p>
+        </article>
+      </div>
       <div class="head-row">
         <div>
           <p class="eyebrow">Какво има вътре</p>
@@ -447,12 +509,24 @@
     </div>
   </section>
 
+  <section class="section ritual on-dark">
+    <div class="wrap">
+      <p class="eyebrow">Ежедневният ритуал</p>
+      <h2>1 капсула.<br><span>Всяка сутрин.</span></h2>
+      <div class="ritual-grid">
+        <div><h3>Кога</h3><p>Сутрин, по време на или след закуска, с чаша вода.</p></div>
+        <div><h3>Колко дълго</h3><p>Един флакон е 30-дневен курс. Приемайте всеки ден, без пропуски.</p></div>
+        <div><h3>За кого</h3><p>За възрастни мъже и жени. Не е подходящ при бременност и кърмене.</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="together">
     <img src="images/together.webp" width="1671" height="941" loading="lazy" alt="Два флакона Norden BioLabs с капсули върху каменен плот">
     <div class="together-card">
       <p class="eyebrow">За него и за нея</p>
       <h2>По-добре заедно</h2>
-      <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки.</p>
+      <p>Една формула за двама. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки, за 39.95 € вместо 59.80 €.</p>
       <a class="btn btn-dark order-mail" data-pick="2" href="mailto:nordenbiolabs@gmail.com">Пакет за двама · 39.95 €</a>
     </div>
   </section>
@@ -468,7 +542,7 @@
       </div>
 
       <div class="buy">
-        <p class="eyebrow">Хранителна добавка · 30 капсули</p>
+        <p class="eyebrow">Промоционална цена · 30 капсули</p>
         <h2>Daily Performance</h2>
         <p class="sub">Енергия, фокус и тонус в една капсула сутрин. За мъже и жени.</p>
         <ul class="ticks">
@@ -483,16 +557,16 @@
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
               <span><span class="pack-name">2 флакона · За двама</span><span class="pack-sub">60 капсули · 0.67 € на ден</span></span>
-              <span class="pack-price"><b>39.95 €</b><span class="save">Спестявате 5.95 €</span></span>
+              <span class="pack-price"><b>39.95 €</b><s>59.80 €</s><span class="save">Спестявате 19.85 €</span></span>
             </span>
-            <span class="pack-flag">Най-изгоден</span>
+            <span class="pack-flag">Най-изгоден · −33%</span>
           </label>
           <label class="pack">
             <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" data-name="1 флакон">
             <span class="pack-body">
               <span class="radio" aria-hidden="true"></span>
-              <span><span class="pack-name">1 флакон</span><span class="pack-sub">30 капсули · 30-дневен курс</span></span>
-              <span class="pack-price"><b>22.95 €</b><span class="per">0.77 € на ден</span></span>
+              <span><span class="pack-name">1 флакон</span><span class="pack-sub">30 капсули · 0.77 € на ден</span></span>
+              <span class="pack-price"><b>22.95 €</b><s>29.90 €</s><span class="save">−23%</span></span>
             </span>
           </label>
         </div>
@@ -538,15 +612,23 @@
     </div>
   </section>
 
-  <section class="section ritual on-dark">
+  <section class="section trust on-dark" id="doverie">
     <div class="wrap">
-      <p class="eyebrow">Ежедневният ритуал</p>
-      <h2>1 капсула.<br><span>Всяка сутрин.</span></h2>
-      <div class="ritual-grid">
-        <div><h3>Кога</h3><p>Сутрин, по време на или след закуска, с чаша вода.</p></div>
-        <div><h3>Колко дълго</h3><p>Един флакон е 30-дневен курс. Приемайте всеки ден, без пропуски.</p></div>
-        <div><h3>За кого</h3><p>За възрастни мъже и жени. Не е подходящ при бременност и кърмене.</p></div>
+      <div class="head-row">
+        <div>
+          <p class="eyebrow">Доверие</p>
+          <h2>Купувате без риск</h2>
+        </div>
+        <p class="lead">Не плащате нищо предварително. Виждате пратката, преди да платите, и говорите с човек, не с бот.</p>
       </div>
+      <div class="trust-grid">
+        <article><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 15h3"/></svg><h3>Плащане при получаване</h3><p>Плащате на куриера с наложен платеж. Без карти и без онлайн плащане.</p></article>
+        <article><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg><h3>14 дни право на отказ</h3><p>Можете да върнете неотворен продукт в 14-дневен срок по Закона за защита на потребителите.</p></article>
+        <article><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h3"/></svg><h3>Прозрачен състав</h3><p>Всяка съставка е посочена с форма и количество. Без скрити „патентовани смеси“.</p></article>
+        <article><svg viewBox="0 0 24 24"><path d="M5 4h14a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-7l-5 4v-4H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg><h3>Реален контакт</h3><p>Отговаряме лично на имейл, Viber и WhatsApp на +359 897 914 321.</p></article>
+      </div>
+      <!-- ПОПЪЛНИ: данните на фирмата и производителя -->
+      <p class="trust-legal">Търговец: [Име на фирмата] · ЕИК [номер] · [Адрес]. Производител: [Име и държава на производителя]. <a href="usloviya.html">Общи условия</a> · <a href="poveritelnost.html">Поверителност</a></p>
     </div>
   </section>
 
@@ -651,6 +733,7 @@
       <nav class="footer-links" aria-label="Връзки">
         <a class="order-mail" href="mailto:nordenbiolabs@gmail.com">Поръчай</a>
         <a href="#sastav">Състав</a>
+        <a href="#doverie">Доверие</a>
         <a href="usloviya.html">Общи условия</a>
         <a href="poveritelnost.html">Поверителност</a>
       </nav>
@@ -658,8 +741,6 @@
     <div class="wordmark" aria-hidden="true">Norden</div>
     <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
     <div class="footer-contact"><span>Viber и WhatsApp: +359 897 914 321</span><span>Имейл: nordenbiolabs@gmail.com</span></div>
-    <!-- ПОПЪЛНИ: данните на фирмата са задължителни за онлайн търговия (ЗЗП, ЗЕТ) -->
-    <p class="trader">Търговец: [Име на фирмата] · ЕИК [номер] · [Адрес на управление]. Производител: [Име и държава на производителя].</p>
     <div class="legal-row"><span>© 2026 Norden BioLabs. Всички права запазени.</span><span>Плащане при доставка · Еконт · Спиди</span></div>
   </div>
 </footer>
