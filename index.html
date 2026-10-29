@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Norden BioLabs</title>
+<meta name="description" content="Daily Performance от Norden BioLabs — хранителна добавка с L-цитрулин, ашваганда KSM-66®, бабини зъби и цинк. Прозрачен състав, плащане при доставка.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- ТУК ПОСТАВИ META PIXEL КОДА (след банер за съгласие с бисквитки) -->
+<style>
+  /* Layout: светли каменни плоскости за историята, черно-златна лента за състава — като етикета. */
+  :root {
+    --ink: #17140f;
+    --ink-soft: #4f4840;
+    --paper: #f8f5f0;
+    --stone: #ece6dc;
+    --line: #dcd3c5;
+    --gold: #b38b45;
+    --gold-text: #86642a;
+    --night: #12100d;
+    --night-2: #1d1a15;
+    --night-line: #3a332a;
+    --night-text: #cfc6b8;
+    --gold-bright: #d8b36d;
+    --ok: #2f6b45;
+    --err: #9b3426;
+    --display: "Cormorant", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Jost", "Futura", "Century Gothic", "Segoe UI", system-ui, sans-serif;
+    --wrap: 1120px;
+    --radius: 6px;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .wrap {
+    max-width: var(--wrap);
+    margin: 0 auto;
+    padding-left: max(20px, env(safe-area-inset-left, 0px));
+    padding-right: max(20px, env(safe-area-inset-right, 0px));
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold-text);
+    margin: 0;
+  }
+  h1, h2, h3 { text-wrap: balance; margin: 0; }
+  h1, h2 { font-family: var(--display); font-weight: 600; line-height: 1.05; letter-spacing: -.01em; }
+  h1 { font-size: clamp(44px, 6.4vw, 76px); }
+  h2 { font-size: clamp(34px, 4.4vw, 52px); }
+  h3 { font-size: 15px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  p { margin: 0; }
+  .lead { font-size: 19px; color: var(--ink-soft); max-width: 34em; font-weight: 300; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font: 500 14px/1 var(--sans);
+    letter-spacing: .14em; text-transform: uppercase;
+    text-decoration: none;
+    padding: 18px 28px;
+    border-radius: var(--radius);
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .btn-dark { background: var(--ink); color: var(--paper); }
+  .btn-dark:hover { background: #2b251d; }
+  .btn-line { background: transparent; color: var(--ink); }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+
+  /* Header */
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--paper); }
+  .site-header {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+    background: color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 72px; }
+  .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); }
+  .logo svg { width: 38px; height: 20px; flex: none; }
+  .logo span { font-size: 19px; font-weight: 500; letter-spacing: .01em; }
+  .nav { display: flex; align-items: center; gap: 32px; }
+  .nav a:not(.btn) { font-size: 14px; text-decoration: none; color: var(--ink-soft); letter-spacing: .04em; }
+  .nav a:not(.btn):hover { color: var(--ink); }
+  .nav .btn { padding: 12px 20px; font-size: 12px; }
+  @media (max-width: 820px) { .nav a:not(.btn) { display: none; } }
+
+  /* Hero */
+  .hero { padding-block: 56px 72px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+  .hero-copy { display: grid; gap: 24px; min-width: 0; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+  .hero-facts {
+    display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: 0;
+    margin-top: 16px; padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .hero-facts div { padding-right: 28px; margin-right: 28px; border-right: 1px solid var(--line); }
+  .hero-facts div:last-child { border-right: 0; margin-right: 0; padding-right: 0; }
+  .hero-facts b { display: block; font-family: var(--display); font-size: 32px; font-weight: 600; line-height: 1; font-variant-numeric: lining-nums; }
+  .hero-facts small { font-size: 13px; color: var(--ink-soft); letter-spacing: .03em; }
+  .hero-visual {
+    background: var(--stone);
+    border-radius: var(--radius);
+    aspect-ratio: 4 / 4.4;
+    max-width: 100%;
+    display: grid; place-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero-visual img { width: 118%; max-width: none; mix-blend-mode: multiply; }
+  .hero-visual .tag {
+    position: absolute; left: 20px; bottom: 18px;
+    font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft);
+  }
+  @media (max-width: 880px) {
+    .hero .wrap { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { order: -1; aspect-ratio: 4 / 3.4; }
+    .hero-visual img { width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .hero-facts div { padding-right: 16px; margin-right: 16px; }
+    .hero-facts b { font-size: 26px; }
+  }
+
+  /* Assurance strip */
+  .strip { border-block: 1px solid var(--line); background: var(--paper); }
+  .strip ul {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .strip li { display: flex; align-items: center; gap: 12px; padding: 22px 20px; font-size: 14px; color: var(--ink-soft); border-left: 1px solid var(--line); }
+  .strip li:first-child { border-left: 0; padding-left: 0; }
+  .strip svg { width: 22px; height: 22px; flex: none; stroke: var(--gold); fill: none; stroke-width: 1.4; }
+  @media (max-width: 880px) {
+    .strip ul { grid-template-columns: 1fr 1fr; }
+    .strip li { border-left: 0; padding-left: 0; }
+  }
+  @media (max-width: 480px) { .strip ul { grid-template-columns: 1fr; } .strip li { padding-block: 14px; } }
+
+  /* Section base */
+  .section { padding-block: 104px; }
+  .section-head { display: grid; gap: 16px; max-width: 640px; margin-bottom: 56px; }
+  @media (max-width: 640px) { .section { padding-block: 72px; } .section-head { margin-bottom: 40px; } }
+
+  /* Pillars */
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--ink); }
+  .pillar { padding: 32px 32px 8px 0; display: grid; gap: 14px; align-content: start; min-width: 0; }
+  .pillar + .pillar { padding-left: 32px; border-left: 1px solid var(--line); }
+  .pillar svg { width: 40px; height: 40px; stroke: var(--gold); fill: none; stroke-width: 1.3; }
+  .pillar p { color: var(--ink-soft); font-size: 16px; }
+  .pillar .ing { font-size: 13px; letter-spacing: .08em; color: var(--gold-text); text-transform: uppercase; padding-top: 14px; border-top: 1px dashed var(--line); }
+  @media (max-width: 880px) {
+    .pillars { grid-template-columns: 1fr; }
+    .pillar, .pillar + .pillar { padding: 28px 0; border-left: 0; }
+    .pillar + .pillar { border-top: 1px solid var(--line); }
+  }
+
+  /* Together */
+  .together { background: var(--stone); }
+  .together .wrap { display: grid; grid-template-columns: 1.5fr 1fr; gap: 56px; align-items: center; }
+  .together figure { margin: 0; border-radius: var(--radius); overflow: hidden; }
+  .together-copy { display: grid; gap: 20px; min-width: 0; }
+  .together-copy p { color: var(--ink-soft); }
+  .together-copy .btn { justify-self: start; margin-top: 8px; }
+  @media (max-width: 880px) { .together .wrap { grid-template-columns: 1fr; gap: 36px; } }
+
+  /* Formula (dark band) */
+  .formula { background: var(--night); color: var(--night-text); }
+  .formula h2 { color: #f4efe6; }
+  .formula .eyebrow { color: var(--gold-bright); }
+  .formula .lead { color: var(--night-text); }
+  .formula-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 56px; align-items: start; }
+  .table-box { overflow-x: auto; min-width: 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 16px; }
+  caption { text-align: left; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-bright); padding-bottom: 14px; }
+  th { text-align: left; font-weight: 500; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #8f8576; padding: 0 0 12px; border-bottom: 1px solid var(--gold); }
+  th:last-child, td:last-child { text-align: right; }
+  td { padding: 15px 0; border-bottom: 1px solid var(--night-line); vertical-align: top; }
+  td:first-child { padding-right: 24px; color: #f4efe6; }
+  td small { display: block; color: #8f8576; font-size: 13px; margin-top: 2px; }
+  td.mg { font-variant-numeric: tabular-nums; color: var(--gold-bright); white-space: nowrap; font-weight: 500; }
+  .dose { background: var(--night-2); border: 1px solid var(--night-line); border-radius: var(--radius); padding: 32px; display: grid; gap: 0; }
+  .dose h3 { color: var(--gold-bright); margin-bottom: 12px; }
+  .dose dl { margin: 0; display: grid; }
+  .dose dl > div { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--night-line); }
+  .dose dt { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #8f8576; padding-top: 3px; }
+  .dose dd { margin: 0; color: #f4efe6; font-size: 15px; }
+  .dose .note { font-size: 13px; color: #8f8576; margin-top: 18px; line-height: 1.6; }
+  @media (max-width: 880px) { .formula-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .dose { padding: 24px 20px; } .dose dl > div { grid-template-columns: 1fr; gap: 2px; } }
+
+  /* Order */
+  .order-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: start; }
+  .packs { display: grid; gap: 14px; }
+  .pack { position: relative; display: block; cursor: pointer; }
+  .pack input { position: absolute; opacity: 0; pointer-events: none; }
+  .pack-body {
+    display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+    border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px;
+    background: #fff; transition: border-color .2s, box-shadow .2s;
+  }
+  .pack input:checked + .pack-body { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+  .pack input:focus-visible + .pack-body { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .radio { width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--ink-soft); display: grid; place-items: center; }
+  .pack input:checked + .pack-body .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
+  .pack-name { font-weight: 500; font-size: 17px; }
+  .pack-sub { font-size: 13px; color: var(--ink-soft); }
+  .pack-price { text-align: right; font-variant-numeric: tabular-nums; }
+  .pack-price b { display: block; font-family: var(--display); font-size: 30px; font-weight: 600; line-height: 1; }
+  .pack-price s { font-size: 13px; color: var(--ink-soft); }
+  .pack-flag {
+    position: absolute; top: -10px; right: 18px;
+    background: var(--gold); color: var(--night);
+    font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px;
+  }
+  .order-notes { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 10px; font-size: 14px; color: var(--ink-soft); }
+  .order-notes li { display: flex; gap: 10px; align-items: baseline; }
+  .order-notes li::before { content: ""; width: 6px; height: 6px; background: var(--gold); transform: rotate(45deg) translateY(-2px); flex: none; }
+
+  .form-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 36px; display: grid; gap: 20px; min-width: 0; }
+  .form-card h3 { font-family: var(--display); font-size: 30px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+  .form-card > p { font-size: 14px; color: var(--ink-soft); margin-top: -12px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+  .field input {
+    font: 400 16px var(--sans); color: var(--ink);
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 14px 16px; width: 100%;
+  }
+  .field input::placeholder { color: #a39a8c; }
+  .field input:focus { outline: none; border-color: var(--ink); background: #fff; }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .consent { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: var(--ink-soft); line-height: 1.5; }
+  .consent input { margin-top: 2px; accent-color: var(--ink); width: 16px; height: 16px; flex: none; }
+  .summary { display: flex; justify-content: space-between; align-items: baseline; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--ink-soft); }
+  .summary b { font-family: var(--display); font-size: 28px; color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .form-card .btn { width: 100%; padding-block: 20px; }
+  .result { font-size: 14px; padding: 14px 16px; border-radius: var(--radius); border: 1px solid currentColor; }
+  .result.ok { color: var(--ok); background: #eef5ef; }
+  .result.err { color: var(--err); background: #faeeeb; }
+  .result.wait { color: var(--ink-soft); background: var(--paper); }
+  @media (max-width: 880px) { .order-grid { grid-template-columns: 1fr; gap: 40px; } }
+  @media (max-width: 480px) {
+    .form-card { padding: 24px 20px; }
+    .row-2 { grid-template-columns: 1fr; }
+    .pack-body { padding: 18px 16px; gap: 14px; }
+    .pack-price b { font-size: 26px; }
+  }
+
+  /* FAQ */
+  .faq { background: var(--stone); }
+  .faq .wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 56px; align-items: start; }
+  .faq-list { border-top: 1px solid var(--ink); min-width: 0; }
+  details { border-bottom: 1px solid var(--line); }
+  summary {
+    list-style: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    padding: 22px 0; font-size: 18px; font-weight: 500;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-family: var(--display); font-size: 28px; line-height: 1; color: var(--gold-text); transition: transform .2s; }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { padding-bottom: 22px; color: var(--ink-soft); max-width: 60ch; }
+  @media (max-width: 880px) { .faq .wrap { grid-template-columns: 1fr; gap: 32px; } }
+
+  /* Footer */
+  .site-footer { background: var(--night); color: #8f8576; font-size: 13px; padding-block: 56px 40px; }
+  .site-footer .wrap { display: grid; gap: 28px; }
+  .footer-top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; align-items: center; padding-bottom: 28px; border-bottom: 1px solid var(--night-line); }
+  .site-footer .logo { color: #f4efe6; }
+  .site-footer .logo svg { stroke: var(--gold-bright); }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 24px; }
+  .footer-links a { text-decoration: none; color: var(--night-text); }
+  .footer-links a:hover { color: #fff; }
+  .site-footer p { max-width: 90ch; line-height: 1.7; }
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="peaks" viewBox="0 0 76 40"><path d="M2 38 L24 14 L32 22 L44 4 L60 24 L66 18 L74 38" fill="none" stroke-width="3.2" stroke-linejoin="miter" stroke-linecap="square"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Norden BioLabs — начало">
+      <svg stroke="currentColor"><use href="#peaks"/></svg>
+      <span>Norden BioLabs</span>
+    </a>
+    <nav class="nav" aria-label="Основна навигация">
+      <a href="#formula">Формулата</a>
+      <a href="#sastav">Състав</a>
+      <a href="#faq">Въпроси</a>
+      <a class="btn btn-dark" href="#order">Поръчай</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">Daily Performance · За него и за нея</p>
+        <h1>Енергия, фокус и тонус за всеки ден</h1>
+        <p class="lead">Ежедневна формула с адаптогени и стандартизирани растителни екстракти, подбрана за по-спокоен ритъм и повече сили за хората и нещата, които са ви важни.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark" href="#order">Поръчай сега</a>
+          <a class="btn btn-line" href="#sastav">Виж състава</a>
+        </div>
+        <div class="hero-facts">
+          <div><b>9</b><small>активни съставки</small></div>
+          <div><b>2</b><small>капсули дневно</small></div>
+          <div><b>30</b><small>дни на флакон</small></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="images/product.jpg" width="1448" height="1086" alt="Флакон Norden BioLabs Daily Performance с черен етикет и златна капачка">
+        <span class="tag">Хранителна добавка</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <ul>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18M7 15h3"/></svg>Плащане при доставка</li>
+        <li><svg viewBox="0 0 24 24"><path d="M2 7h12v9H2zM14 10h4l3 3v3h-7"/><circle cx="6" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg>Еконт и Спиди до офис или адрес</li>
+        <li><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 11h7M9 15h7M9 7h3"/></svg>Всяка съставка с количество</li>
+        <li><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4h4"/></svg>14 дни право на отказ</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" id="formula">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Формулата</p>
+        <h2>Три посоки в една капсула</h2>
+        <p class="lead">Съставките са групирани според ролята си. Всяка е в количество, което виждате в таблицата по-долу.</p>
+      </div>
+      <div class="pillars">
+        <article class="pillar">
+          <svg viewBox="0 0 40 40"><path d="M20 6c6 8 10 13 10 18a10 10 0 0 1-20 0c0-5 4-10 10-18z"/><path d="M15 25a5 5 0 0 0 5 5"/></svg>
+          <h3>Кръвообращение</h3>
+          <p>L-цитрулин малат и гинко билоба, съставки с дълга история във формули за подкрепа на кръвообращението.</p>
+          <p class="ing">L-Citrulline Malate · Гинко билоба</p>
+        </article>
+        <article class="pillar">
+          <svg viewBox="0 0 40 40"><path d="M20 34V16"/><path d="M20 22c-7 0-11-5-11-12 7 0 11 5 11 12z"/><path d="M20 18c0-6 4-10 11-10 0 6-4 10-11 10z"/></svg>
+          <h3>Баланс</h3>
+          <p>Адаптогени, които традиционно се използват в Северна Европа и Азия при ежедневно напрежение.</p>
+          <p class="ing">Ашваганда KSM-66® · Родиола · Жен-шен</p>
+        </article>
+        <article class="pillar">
+          <svg viewBox="0 0 40 40"><path d="M4 32 L15 16 L20 22 L26 10 L36 32"/><path d="M23 16l3-6 3 6"/></svg>
+          <h3>Тонус</h3>
+          <p>Бабини зъби и цинк. Цинкът допринася за поддържане на нормално ниво на тестостерон в кръвта и за нормалната функция на имунната система.</p>
+          <p class="ing">Tribulus terrestris · Цинков пиколинат</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section together">
+    <div class="wrap">
+      <figure>
+        <img src="images/together.webp" width="1671" height="941" loading="lazy" alt="Два флакона Norden BioLabs с капсули върху каменен плот, надпис Better Together">
+      </figure>
+      <div class="together-copy">
+        <p class="eyebrow">Better Together</p>
+        <h2>Една формула за двама</h2>
+        <p>Daily Performance е създадена за мъже и жени. Пакетът с два флакона е най-изгодният начин да започнете заедно: по един месечен курс за всеки.</p>
+        <a class="btn btn-dark" href="#order" data-pick="2">Избери пакет за двама</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section formula" id="sastav">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Пълен състав</p>
+        <h2>Нищо скрито зад „патентована смес“</h2>
+        <p class="lead">Посочваме всяка съставка, нейната форма и точното количество в дневната доза.</p>
+      </div>
+      <div class="formula-grid">
+        <div class="table-box">
+          <table>
+            <caption>Дневна доза · 2 капсули</caption>
+            <thead><tr><th scope="col">Съставка</th><th scope="col">Количество</th></tr></thead>
+            <tbody>
+              <tr><td>L-Citrulline Malate</td><td class="mg">400 mg</td></tr>
+              <tr><td>Бабини зъби<small>Tribulus terrestris, екстракт 40–45% сапонини</small></td><td class="mg">250 mg</td></tr>
+              <tr><td>Ашваганда KSM-66®<small>екстракт от корен</small></td><td class="mg">200 mg</td></tr>
+              <tr><td>Родиола / Златен корен</td><td class="mg">80 mg</td></tr>
+              <tr><td>Корейски жен-шен<small>Panax ginseng</small></td><td class="mg">60 mg</td></tr>
+              <tr><td>Гинко билоба<small>24% гликозиди</small></td><td class="mg">40 mg</td></tr>
+              <tr><td>Джинджифил<small>корен</small></td><td class="mg">20 mg</td></tr>
+              <tr><td>Цинк<small>като цинков пиколинат, елементарен</small></td><td class="mg">15 mg</td></tr>
+              <tr><td>BioPerine®<small>екстракт от черен пипер</small></td><td class="mg">5 mg</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <aside class="dose">
+          <h3>Прием</h3>
+          <dl>
+            <div><dt>Доза</dt><dd>2 капсули веднъж дневно</dd></div>
+            <div><dt>Кога</dt><dd>Сутрин, по време на или след закуска, с вода</dd></div>
+            <div><dt>Курс</dt><dd>1 флакон = 60 капсули = 30 дни</dd></div>
+            <div><dt>Съхранение</dt><dd>На сухо и хладно място, недостъпно за деца</dd></div>
+          </dl>
+          <p class="note">Да не се превишава препоръчителната дневна доза. При бременност, кърмене или прием на лекарства се консултирайте с лекар.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="order">
+    <div class="wrap order-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:36px">
+          <p class="eyebrow">Поръчка</p>
+          <h2>Изберете курса си</h2>
+          <p class="lead">Цените са с ДДС. Доставката е безплатна, плащате на куриера при получаване.</p>
+        </div>
+        <div class="packs" role="radiogroup" aria-label="Пакет">
+          <label class="pack">
+            <input type="radio" name="pack" id="pack-2" value="2 флакона „За двама“ — 39.95 €" data-price="39.95 €" form="orderForm" checked>
+            <span class="pack-body">
+              <span class="radio" aria-hidden="true"></span>
+              <span><span class="pack-name">2 флакона · За двама</span><br><span class="pack-sub">120 капсули · по 0.33 € на капсула</span></span>
+              <span class="pack-price"><b>39.95 €</b><s>91.80 €</s></span>
+            </span>
+            <span class="pack-flag">Най-изгоден</span>
+          </label>
+          <label class="pack">
+            <input type="radio" name="pack" id="pack-1" value="1 флакон — 22.95 €" data-price="22.95 €" form="orderForm">
+            <span class="pack-body">
+              <span class="radio" aria-hidden="true"></span>
+              <span><span class="pack-name">1 флакон</span><br><span class="pack-sub">60 капсули · 30-дневен курс</span></span>
+              <span class="pack-price"><b>22.95 €</b><s>45.90 €</s></span>
+            </span>
+          </label>
+        </div>
+        <ul class="order-notes">
+          <li>Обаждаме се за потвърждение преди изпращане</li>
+          <li>Изпращаме с Еконт или Спиди в рамките на 1–2 работни дни</li>
+          <li>Можете да се откажете от поръчката в 14-дневен срок</li>
+        </ul>
+      </div>
+
+      <form id="orderForm" class="form-card" novalidate>
+        <!-- Замени със своя безплатен ключ от web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+        <input type="hidden" name="subject" value="Нова поръчка за Norden BioLabs">
+        <input type="hidden" name="from_name" value="Norden BioLabs Website">
+        <input type="hidden" name="Пакет" id="pkgField" value="2 флакона „За двама“ — 39.95 €">
+
+        <h3>Данни за доставка</h3>
+        <p>Без регистрация и без онлайн плащане.</p>
+
+        <div class="field">
+          <label for="f-name">Име и фамилия</label>
+          <input id="f-name" type="text" name="Име" autocomplete="name" placeholder="Иван Петров" required>
+        </div>
+        <div class="row-2">
+          <div class="field">
+            <label for="f-phone">Телефон</label>
+            <input id="f-phone" type="tel" name="Телефон" autocomplete="tel" placeholder="+359 88 123 4567" required>
+          </div>
+          <div class="field">
+            <label for="f-city">Град</label>
+            <input id="f-city" type="text" name="Град" autocomplete="address-level2" placeholder="София" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="f-addr">Офис на Еконт / Спиди или адрес</label>
+          <input id="f-addr" type="text" name="Адрес_или_Офис" autocomplete="street-address" placeholder="Напр. Еконт, офис Лозенец" required>
+        </div>
+        <label class="consent" for="f-consent">
+          <input id="f-consent" type="checkbox" required>
+          <span>Съгласен/на съм с <a href="/usloviya">Общите условия</a> и <a href="/poveritelnost">Политиката за поверителност</a>.</span>
+        </label>
+        <div class="summary"><span>Общо при доставка</span><b id="sumPrice">39.95 €</b></div>
+        <button type="submit" class="btn btn-dark">Потвърди поръчката</button>
+        <div id="resultMessage" class="result" role="status" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Въпроси</p>
+        <h2>Често задавани въпроси</h2>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Подходящ ли е за жени?</summary>
+          <p>Да. Формулата е предназначена за възрастни мъже и жени. Не се препоръчва по време на бременност и кърмене.</p>
+        </details>
+        <details>
+          <summary>Как да приемам капсулите?</summary>
+          <p>По 2 капсули веднъж дневно, сутрин по време на или след закуска, с вода. Един флакон стига за 30 дни.</p>
+        </details>
+        <details>
+          <summary>Мога ли да го приемам с лекарства?</summary>
+          <p>Ако приемате лекарства или имате заболяване, консултирайте се с лекар преди да започнете. Някои растителни съставки, като ашваганда и гинко, могат да взаимодействат с определени медикаменти.</p>
+        </details>
+        <details>
+          <summary>Как се доставя и плаща поръчката?</summary>
+          <p>След като попълните формата, ще ви се обадим за потвърждение. Изпращаме с Еконт или Спиди до офис или адрес, а плащате на куриера при получаване.</p>
+        </details>
+        <details>
+          <summary>Мога ли да върна продукта?</summary>
+          <p>Да. Имате право да се откажете от покупката в 14-дневен срок от получаването, съгласно Закона за защита на потребителите. Подробностите са в Общите условия.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="logo" href="#top">
+        <svg><use href="#peaks"/></svg>
+        <span>Norden BioLabs</span>
+      </a>
+      <nav class="footer-links" aria-label="Правна информация">
+        <a href="/usloviya">Общи условия</a>
+        <a href="/poveritelnost">Поверителност</a>
+        <a href="#order">Поръчка</a>
+      </nav>
+    </div>
+    <p>Daily Performance е хранителна добавка и не е лекарство. Не замества разнообразното хранене и здравословния начин на живот. Не се препоръчва при бременност, кърмене, свръхчувствителност към някоя от съставките или при прием на лекарства без консултация с лекар. Да не се превишава препоръчителната дневна доза. Да се съхранява на място, недостъпно за деца.</p>
+    <p>© 2026 Norden BioLabs. Всички права запазени.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('orderForm');
+    var pkgField = document.getElementById('pkgField');
+    var sum = document.getElementById('sumPrice');
+    var result = document.getElementById('resultMessage');
+    var radios = document.querySelectorAll('input[name="pack"]');
+
+    function sync() {
+      radios.forEach(function (r) {
+        if (r.checked) { pkgField.value = r.value; sum.textContent = r.dataset.price; }
+      });
+    }
+    radios.forEach(function (r) { r.addEventListener('change', sync); });
+
+    // Бутонът „Избери пакет за двама“ маркира пакета
+    document.querySelectorAll('[data-pick]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.getElementById('pack-' + a.dataset.pick).checked = true;
+        sync();
+      });
+    });
+
+    function show(kind, text) {
+      result.className = 'result ' + kind;
+      result.textContent = text;
+      result.hidden = false;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) {
+        show('err', 'Моля, попълнете всички полета и приемете Общите условия.');
+        form.reportValidity && form.reportValidity();
+        return;
+      }
+      sync();
+      var data = Object.fromEntries(new FormData(form));
+      delete data.pack;
+      show('wait', 'Изпращаме поръчката…');
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(function (res) {
+        if (res.status === 200) {
+          show('ok', 'Благодарим ви! Поръчката е приета. Ще ви се обадим по телефона за потвърждение.');
+          form.reset();
+          document.getElementById('pack-2').checked = true;
+          sync();
+          // Тук може да се изпрати Meta Pixel събитие: fbq('track', 'Purchase');
+        } else {
+          show('err', 'Поръчката не беше изпратена. Проверете данните и опитайте отново.');
+        }
+      })
+      .catch(function () {
+        show('err', 'Няма връзка със сървъра. Проверете интернет връзката си и опитайте отново.');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
