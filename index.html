@@ -297,13 +297,9 @@
   .review p { font-size: 16px; }
   .review footer { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; color: var(--ink-soft); border-top: 1px solid var(--line); padding-top: 12px; }
   .review footer b { color: var(--ink); font-weight: 500; }
-  .review-empty { background: #fffdf8; border: 1px dashed var(--line); border-radius: var(--r); padding: 40px 32px; display: grid; gap: 10px; max-width: 720px; }
-  .review-empty-title { font-size: 20px; font-weight: 500; }
-  .review-empty p:last-child { color: var(--ink-soft); }
-  .review-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
   .review-note { margin-top: 20px; font-size: 13px; color: var(--ink-soft); }
   @media (max-width: 1000px) { .review-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .review-grid { grid-template-columns: 1fr; } .rating-summary { justify-items: start; } .review-empty { padding: 28px 22px; } .review-cta .btn { width: 100%; } }
+  @media (max-width: 640px) { .review-grid { grid-template-columns: 1fr; } .rating-summary { justify-items: start; } }
 
   /* Ritual */
   .ritual { background: var(--night); color: var(--cream); }
@@ -423,7 +419,7 @@
       <a href="#sastav">Ползи</a>
       <a href="#produkt">Цена</a>
       <a href="#doverie">Доверие</a>
-      <a href="#otzivi">Отзиви</a>
+      <a href="#otzivi" id="navReviews" hidden>Отзиви</a>
       <a href="#faq">Въпроси</a>
     </nav>
     <a class="logo" href="#top" aria-label="Norden BioLabs — начало">
@@ -679,7 +675,7 @@
     </div>
   </section>
 
-  <section class="section reviews" id="otzivi">
+  <section class="section reviews" id="otzivi" hidden>
     <div class="wrap">
       <div class="head-row">
         <div>
@@ -693,14 +689,6 @@
         </div>
       </div>
       <div class="review-grid" id="reviewGrid"></div>
-      <div class="review-empty" id="reviewEmpty">
-        <p class="review-empty-title">Daily Performance е нов продукт и събираме първите отзиви.</p>
-        <p>Опитахте го? Разкажете ни как ви се отразява. С ваше съгласие ще публикуваме отзива с първото ви име и града.</p>
-      </div>
-      <div class="review-cta">
-        <a class="btn btn-dark" id="reviewMail" href="mailto:nordenbiolabs@gmail.com">Напиши отзив по имейл</a>
-        <a class="btn btn-line" id="reviewWa" href="https://wa.me/359897914321" target="_blank" rel="noopener">Напиши отзив в WhatsApp</a>
-      </div>
       <p class="review-note">Публикуваме само истински отзиви от клиенти, с тяхно съгласие. Не редактираме съдържанието им и не плащаме за отзиви.</p>
     </div>
   </section>
@@ -917,18 +905,13 @@
       });
       if (REVIEWS.length) {
         var avg = REVIEWS.reduce(function (a, r) { return a + r.stars; }, 0) / REVIEWS.length;
-        document.getElementById('reviewEmpty').hidden = true;
+        document.getElementById('otzivi').hidden = false;
+        document.getElementById('navReviews').hidden = false;
         document.getElementById('ratingSummary').hidden = false;
         document.getElementById('ratingAvg').textContent = avg.toFixed(1);
         document.getElementById('ratingStars').textContent = star(Math.round(avg));
         document.getElementById('ratingCount').textContent = REVIEWS.length + (REVIEWS.length === 1 ? ' отзив' : ' отзива');
-        document.querySelector('.review-cta .btn-dark').textContent = 'Добави своя отзив';
       }
-      var tpl = 'Здравейте! Ето моя отзив за Daily Performance.\n\nИме (както да се публикува): \nГрад: \nОценка от 1 до 5: \nОтзив: \n\n' +
-        'Съгласен/на съм отзивът ми да бъде публикуван на сайта с името и града ми.';
-      document.getElementById('reviewMail').href = 'mailto:nordenbiolabs@gmail.com?subject=' +
-        encodeURIComponent('Отзив за Daily Performance') + '&body=' + encodeURIComponent(tpl);
-      document.getElementById('reviewWa').href = 'https://wa.me/359897914321?text=' + encodeURIComponent(tpl);
     })();
 
     // Тук може да се изпрати Meta Pixel събитие при клик на Viber/имейл: fbq('track', 'Contact');
